@@ -28,5 +28,9 @@
     "husky": "^0.12.0",
     "redbox-react": "^1.4.3",
     "roadhog": "^1.2.1"
+  },
+  "prettier": {
+    "singleQuote": true,
+    "semi": true
   }
 }
