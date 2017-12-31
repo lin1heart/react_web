@@ -1,23 +1,21 @@
 import React from 'react';
-import { Link } from 'react-router';
 import { connect } from 'dva';
 import styles from './IndexPage.css';
 
-
-function IndexPage() {
+function detail() {
   return (
     <div className={styles.normal}>
-      <h1 className={styles.title}>Yay!</h1>
+      <h1 className={styles.title}>Yay! Welcome to dva!</h1>
       <div className={styles.welcome} />
       <ul className={styles.list}>
         <li>To get started, edit <code>src/index.js</code> and save to reload.</li>
-        <Link to="/list">Three</Link>
+        <li><a href="http://localhost:8000/#/">Getting Started</a></li>
       </ul>
     </div>
   );
 }
 
-IndexPage.propTypes = {
+detail.propTypes = {
 };
 
-export default connect()(IndexPage);
+export default connect()(detail);

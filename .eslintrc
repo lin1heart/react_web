@@ -7,6 +7,7 @@
     "generator-star-spacing": [0],
     "global-require": [1],
     "import/extensions": [0],
+    "linebreak-style": [0],
     "import/no-extraneous-dependencies": [0],
     "import/no-unresolved": [0],
     "import/prefer-default-export": [0],
