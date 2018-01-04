@@ -15,7 +15,7 @@ function IndexPage() {
       <div className={styles.welcome} />
       <ul className={styles.list}>
         <li>To get started, edit <code>src/index.js</code> and save to reload.</li>
-        <Link to="/list">Three</Link>
+        <Link to="/example">example</Link>
       </ul>
     </div>
   );
