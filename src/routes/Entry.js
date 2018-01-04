@@ -1,5 +1,10 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import {
+  BrowserRouter as Router,
+  Route,
+  Link
+} from 'react-router-dom'
 
 @connect(({ imageList }) => imageList)
 export default class extends Component {
@@ -21,7 +26,7 @@ export default class extends Component {
     console.log('this props is %o', this.props);
     console.log('this state is %o', this.state);
     return (
-      <div>this is example Entry</div>
+      <Link to="/imageList">imageList</Link>
     )
   }
 }

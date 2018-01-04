@@ -1,12 +1,18 @@
 import fetch from '../services/fetch';
 
+const SERVER_URL ='http://192.168.0.106:8080/'
+const IMAGE_URL = 'http://192.168.0.105:80/image/';
+
 const initialState = {
-  imamgeList: 'asdada',
+  imageList: [],
+  ratioList: [],
 };
 const reducers = {
-  test1(state, { test }) {
-    console.log('test1 payload  ', test);
-    return { ...state, test };
+  loadImageList(preState, { imageList }) {
+    return { ...preState, imageList };
+  },
+  loadRatioList(preState, { payload:{ ratioList }}) {
+    return { ...preState, ratioList };
   },
 };
 const effects = {
@@ -18,12 +24,21 @@ const effects = {
     yield put({ type: 'test1', test: 'from effects' });
     yield put({ type: 'fetchTest' });
   },
-  *fetchTest(payload, { put, call }) {
+  *getImageList(payload, { put, call }) {
     try {
-      const res = yield fetch.get('http://api.bob.com/');
-      console.log(' res is ', res);
+      const { data: imageList } = yield fetch.get(SERVER_URL + 'image/getList' ,{pageSize:10,pageIndex: 0});
+      console.log(' res is ', imageList);
+      const ratioList = yield call(calAspectRatio, imageList)
+      console.log('ratioList.slice(0,4) is ', ratioList.slice(0,4),ratioList);
+      
+      const imageHeight = yield calHeight(ratioList.slice(0,4))
+      const imageHeight2 = yield calHeight(ratioList.slice(4,7))
+      console.log("heigt:!!!",imageHeight,imageHeight2);
+      
+      yield put({ type:'loadImageList', imageList})
+      yield put({ type:'loadRatioList', payload:{ ratioList }})
     } catch (e) {
-      console.log('fetchTest  with error: ', e);
+      console.log('getImageList  with error: ', e);
     }
   },
 };
@@ -33,3 +48,40 @@ export default {
   reducers,
   effects,
 };
+function calAspectRatio(data) {
+  const ratioList = [];
+  data.forEach((item ,index)=>{
+    let image = new Image();
+    image.src = IMAGE_URL + data[index].headImage;
+    image.onload = (()=>{
+      console.log('onload');
+      
+      ratioList[index] = image.width/image.height;
+    })
+  })
+  console.log("ratioList222222 is ",ratioList);
+  
+      return ratioList;
+}
+function calHeight(arr){
+  let aspectRatioSum = 0;
+  let body_width =  document.body.clientWidth - 85;
+  arr.forEach((item ,index)=>{
+    aspectRatioSum += item;
+  })
+  let heig = body_width/aspectRatioSum;
+  console.log("aspectRatioSum",aspectRatioSum,body_width,arr);
+  
+  return heig; 
+}
+// async function aa (data) {
+//   const ratioList = [];
+//   for(let item in data) {
+//     let image = new Image();
+//     image.src = IMAGE_URL + data[index].headImage;
+//     image.onload = (()=>{
+//       console.log('onload');
+//       ratioList[index] = image.width/image.height;
+//     })
+//   }
+// }
