@@ -6,3 +6,9 @@ html, body, :global(#root) {
   margin: 0px;
   box-sizing: border-box;
 }
+
+div :global(#root) {
+  padding: 0px;
+  margin: 0px;
+  box-sizing: border-box;
+}

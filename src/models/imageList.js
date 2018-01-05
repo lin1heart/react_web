@@ -9,6 +9,8 @@ type ImageList = {
   headImage: stirng,
   type: number,
   uploadDt?: string,
+  width: number,
+  height: number,
 }
 const _imageList : ImageList = [
   // {headImage: 'https://reactjs.org/logo-og.png'},

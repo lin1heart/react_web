@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 
+import styles from './Entry.css'
+
 @connect(({ imageList }) => imageList)
 export default class extends Component {
   state = {
@@ -22,11 +24,14 @@ export default class extends Component {
     console.log('this props is %o', this.props);
     console.log('this state is %o', this.state);
     return (
-      <div>
-        <Link to="/imageList">imageList</Link><br/>
-        <Link to="/imageDetail">imageList</Link><br/>
-        <Link to="/uploadImage">imageList</Link><br/>
+      <div className={styles.flexContainer}>
+        <h4>welcome to our site</h4>
+        <Link className={styles.flexItem} to="/imageList">imageList</Link><br/>
+        <Link className={styles.flexItem} to="/imageDetail">imageDetail</Link><br/>
+        <Link className={styles.flexItem} to="/uploadImage">uploadImage</Link><br/>
       </div>
     );
   }
 }
+
+
