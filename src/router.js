@@ -6,11 +6,10 @@ import {
   Switch
 } from 'react-router-dom'
 
-import IndexPage from './routes/IndexPage';
-import home from './routes/home';
-import detail from './routes/detail';
 import Entry from './routes/Entry'
 import ImageList from './routes/ImageList'
+import ImageDetail from './routes/ImageDetail'
+import UploadImage from './routes/UploadImage'
 
 function RouterConfig({ history }) {
   return (
@@ -18,6 +17,8 @@ function RouterConfig({ history }) {
       <Switch>
         <Route path="/" exact component={Entry} />
         <Route path="/imageList" component={ImageList} />
+        <Route path="/imageDetail" component={ImageDetail} />
+        <Route path="/uploadImage" component={UploadImage} />
       </Switch>
     </Router>
   );
