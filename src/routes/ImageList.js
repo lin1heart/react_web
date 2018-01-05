@@ -42,7 +42,7 @@ export default class ImageList extends Component {
           console.log('item is ', item)
           return (
             <div style={{ width: temdata[index]*200, flexGrow: temdata[index]*200 }}>
-              <i style={{paddingBottom:temdata[index] *100+'%' }}></i>
+              <i style={{paddingBottom:1/temdata[index] *100+'%' }}></i>
               <img src={IMAGE_URL + headImage} alt="" />
             </div>
           )
