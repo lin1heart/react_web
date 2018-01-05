@@ -71,7 +71,7 @@ function calAspectRatio(data) {
     let image = new Image();
     image.src = IMAGE_URL + data[index].headImage;
     image.onload = (()=>{
-      console.log('onload');
+      console.log('onload',image.width/image.height);
 
       ratioList[index] = image.width/image.height;
     })

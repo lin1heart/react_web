@@ -4,7 +4,6 @@ import { connect } from 'react-redux';
 import styles from './ImageList.css';
 const IMAGE_URL = 'http://192.168.0.105:80/image/';
 
-
 @connect(({ imageList }) => imageList)
 export default class ImageList extends Component {
   state = {
@@ -32,30 +31,23 @@ export default class ImageList extends Component {
     const { imageList = [], ratioList } = this.props;
     console.log('render imageList is %o', imageList);
     console.log('render ratioList is %o', ratioList);
+    const temdata = [1,0.75,1.3333333333333333,1.829268292682927,1.3333333333333333,1.3333333333333333,1,1.4104372355430184,0.6845703125,1.411764705882353]
     const arr1 = imageList.slice(0, 4);
     const arr2 = imageList.slice(4, 7);
+    // "width:{{img.width*200/img.height}}px;flex-grow:{{img.width*200/img.height}}"
     return (
-      <div>
-        <div className={styles.container}>
-          {arr1.map((item, index) => {
-            return (
-              <div key={index} className={styles.flexItem}>
-                <img src={IMAGE_URL + item.headImage} />
-              </div>
-            );
-          })}
-        </div>
-        <div className={styles.container}>
-          {arr2.map((item, index) => {
-            return (
-              <div key={index} className={styles.flexItem}>
-                <img src={IMAGE_URL + item.headImage} />
-              </div>
-            );
-          })}
-        </div>
-        <FourImage data={arr1} />
-      </div>
+      <section>
+        {imageList.map((item, index) => {
+          const { height = 200, width = 200, headImage } = item
+          console.log('item is ', item)
+          return (
+            <div style={{ width: temdata[index]*200, flexGrow: temdata[index]*200 }}>
+              <i style={{paddingBottom:temdata[index] *100+'%' }}></i>
+              <img src={IMAGE_URL + headImage} alt="" />
+            </div>
+          )
+        })}
+      </section>
     );
   }
 }
