@@ -1,4 +1,4 @@
-import fetch from '../services/fetch';
+import fetch from '../utils/fetch.js';
 
 const SERVER_URL ='http://192.168.0.106:8080/'
 const IMAGE_URL = 'http://192.168.0.105:80/image/';
