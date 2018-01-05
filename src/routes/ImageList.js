@@ -34,9 +34,8 @@ export default class ImageList extends Component {
     const temdata = [1,0.75,1.3333333333333333,1.829268292682927,1.3333333333333333,1.3333333333333333,1,1.4104372355430184,0.6845703125,1.411764705882353]
     const arr1 = imageList.slice(0, 4);
     const arr2 = imageList.slice(4, 7);
-    // "width:{{img.width*200/img.height}}px;flex-grow:{{img.width*200/img.height}}"
     return (
-      <section>
+      <section className={styles.container}>
         {imageList.map((item, index) => {
           const { height = 200, width = 200, headImage } = item
           console.log('item is ', item)
@@ -51,10 +50,3 @@ export default class ImageList extends Component {
     );
   }
 }
-
-const FourImage = props => {
-  const { data } = props;
-  console.log('data is ', data);
-
-  return <span>span</span>;
-};
