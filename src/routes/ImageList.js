@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import styles from './ImageList.css';
-const IMAGE_URL = 'http://192.168.0.105:80/image/';
 
 @connect(({ imageList }) => imageList)
 export default class ImageList extends Component {
@@ -25,7 +24,7 @@ export default class ImageList extends Component {
   }
   _onLoad = (x, y) => {
     console.log('x is %o ,y is %o', x, y);
-    
+
   }
   render() {
     const { imageList = [], ratioList } = this.props;

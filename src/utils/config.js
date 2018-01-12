@@ -1,6 +1,6 @@
-const SERVER_URL ='http://192.168.0.106:8080/';
-const IMAGE_URL = 'http://192.168.0.105:80/image/';
-const UPLOAD_URL = 'ftp://192.168.0.105:81/image/upload/';
+const SERVER_URL ='http://54.179.154.58:8080/';
+const IMAGE_URL = 'http://54.179.154.58:8888/dbImage/';
+const UPLOAD_URL = 'ftp://54.179.154.58:8888/image/upload/';
 
 export {
     SERVER_URL,
