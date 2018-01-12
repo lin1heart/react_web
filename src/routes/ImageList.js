@@ -33,7 +33,7 @@ export default class ImageList extends Component {
               }}
             >
               <i style={{ paddingBottom: 1 / aspectRatio * 100 + '%' }} />
-              <img src={1 || IMAGE_URL + headImage} alt="" />
+              <img src={ IMAGE_URL + headImage} alt="" />
             </div>
           );
         })}

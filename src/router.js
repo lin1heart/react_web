@@ -10,6 +10,7 @@ import Entry from './routes/Entry'
 import ImageList from './routes/ImageList'
 import ImageDetail from './routes/ImageDetail'
 import UploadImage from './routes/UploadImage'
+import Category from './routes/Category'
 
 function RouterConfig({ history }) {
   return (
@@ -19,6 +20,7 @@ function RouterConfig({ history }) {
         <Route path="/imageList" component={ImageList} />
         <Route path="/imageDetail" component={ImageDetail} />
         <Route path="/uploadImage" component={UploadImage} />
+        <Route path="/category" component={Category} />
       </Switch>
     </Router>
   );
