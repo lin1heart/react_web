@@ -8,14 +8,8 @@ import type { ImageListItem } from '../models/imageList';
 
 @connect(({ imageList }) => imageList)
 export default class ImageList extends Component {
-  state = {
-    value: 333
-  };
   componentWillMount() {
     this.props.dispatch({ type: 'imageList/getImageList' });
-    this.setState({
-      bbb: 333
-    });
   }
   render() {
     const { imageList } = this.props;
