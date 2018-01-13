@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 
+import NextBtn from '../components/NextBtn'
 import ImageList from './ImageList'
+import { Menu, Icon } from 'antd';
+
 const IAMGE_TYPES = [
   { name: '全部', type: 0 },
   {
@@ -20,7 +22,6 @@ const VIDEO_TYPES = [
   }
 ];
 
-import { Menu, Icon } from 'antd';
 const SubMenu = Menu.SubMenu;
 const MenuItemGroup = Menu.ItemGroup;
 
@@ -39,6 +40,7 @@ export default class Category extends Component {
         <div style={{ display: 'inline-flex' }}>
         <ImageList/>
         </div>
+        <NextBtn />
       </div>
     );
   }

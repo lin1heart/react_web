@@ -13,7 +13,6 @@ export default class ImageList extends Component {
   }
   render() {
     const { imageList } = this.props;
-    console.log('render imageList is %o', imageList);
     return (
       <section className={styles.container}>
         {imageList.map((item, index) => {
