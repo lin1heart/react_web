@@ -3,6 +3,7 @@ import dva from 'dva';
 import './index.css';
 import { dispatchHelper } from './utils/dispatch';
 
+
 // 1. Initialize
 const app = dva({
   // models: () => models,
@@ -24,4 +25,5 @@ app.start('#root');
 app.getStore = () => app._store
 
 dispatchHelper(app)
+
 export default app

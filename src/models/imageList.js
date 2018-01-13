@@ -1,5 +1,4 @@
-import fetch from '../utils/fetch';
-
+import { toast, fetch } from '../utils'
 import { getImageList } from '../services/api';
 import { SERVER_URL, IMAGE_URL } from '../utils/config';
 
@@ -22,12 +21,20 @@ const reducers = {
     const pageIndex = preState.pageIndex + 1;
     return { ...preState, imageList, pageIndex };
   },
-
+  loadMoreImageList(preState, { imageList }) {
+    const pageIndex = preState.pageIndex + 1;
+    const oldImageList = preState.imageList;
+    return {
+      ...preState,
+      imageList: [...oldImageList, ...imageList],
+      pageIndex
+    };
+  }
 };
 const effects = {
   *effect({ payload }, { put, call, select, take }) {
     console.log('this is effect test');
-    
+
     yield 1;
   },
   *getImageList({ payload }, { put, call, select }) {
@@ -37,6 +44,20 @@ const effects = {
 
       const { data: imageList } = yield call(getImageList, pageIndex);
       yield put({ type: 'loadImageList', imageList });
+    } catch (e) {
+      console.log('getImageList  with error: ', e);
+    }
+  },
+  *getMoreImageList({ payload }, { put, call, select }) {
+    try {
+      const { pageIndex } = yield select(({ imageList }) => imageList);
+      console.log('getMoreImageList pageIndex is ', pageIndex);
+      const { data: imageList } = yield call(getImageList, pageIndex);
+      if (Array.isArray(imageList)) {
+        yield put({ type: 'loadMoreImageList', imageList });
+      } else {
+        toast('没有更多了')
+      }
     } catch (e) {
       console.log('getImageList  with error: ', e);
     }

@@ -38,7 +38,7 @@ export default class ImageList extends Component {
           const aspectRatio = width / height;
           return (
             <div
-              key={id}
+              key={headImage + id}
               style={{
                 width: aspectRatio * 200,
                 flexGrow: aspectRatio * 200

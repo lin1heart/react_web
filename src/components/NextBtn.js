@@ -17,7 +17,7 @@ export default class NextBtn extends Component {
   componentDidMount() {}
   componentWillUnmount() {}
   handleClick = () => {
-    dispatch({ type: 'imageList/effect'})
+    dispatch({ type: 'imageList/getMoreImageList'})
   };
   handleMouseOver = e => {
     this.setState({
