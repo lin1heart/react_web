@@ -23,12 +23,15 @@ export default class ImageDetail extends Component {
     const { data } = this.state;
     console.log('rende data is ', data)
     return (
+      <section>
+      <header></header>
       <div>
         {data.map((item, index) => {
           const { url, id, height, width } = item;
-          return <img key={id} src={IMAGE_URL + url} />;
+          return <img key={id} src={IMAGE_URL + url} style={{maxWidth: '2000px'}} />;
         })}
       </div>
+      </section>
     );
   }
 }

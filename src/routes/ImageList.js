@@ -16,7 +16,9 @@ export default class ImageList extends Component {
     router: PropTypes.object.isRequired
   };
   componentWillMount() {
-    this.props.dispatch({ type: 'imageList/getImageList' });
+    if (this.context.router.history.action === 'PUSH') {
+      this.props.dispatch({ type: 'imageList/getImageList' });
+    }
   }
   _toNextPage = () => {
     const pageIndex = this.state.pageIndex + 1;
@@ -29,11 +31,7 @@ export default class ImageList extends Component {
     });
   };
   _onClick = id => {
-    console.log('onclick', id);
-    console.log(this.context);
-    setTimeout(() => {
-      this.context.router.history.push('/imageDetail/' + id);
-    }, 1000);
+    this.context.router.history.push('/imageDetail/' + id);
   };
   _onMouseOver = id => {
     console.log('_onMouseOver', id);
@@ -43,7 +41,7 @@ export default class ImageList extends Component {
   };
   render() {
     const { imageList } = this.props;
-    console.log('this.props is ', this);
+    console.log('ImageList this is ', this);
     return (
       <section className={styles.container}>
         {imageList.map((item, index) => {

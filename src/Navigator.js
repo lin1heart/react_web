@@ -16,8 +16,6 @@ import Category from './routes/Category'
 
 // @connect(({ navigator}) => navigator)
 function Navigator ({ history }) {
-    console.log('history is ', history);
-    console.log('BrowserRouter is ', BrowserRouter);
     return (
       <BrowserRouter>
         <Switch>
