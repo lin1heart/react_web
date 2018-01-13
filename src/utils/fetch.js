@@ -5,7 +5,7 @@ const get = (url: string, params: Object = {}): Promise => {
       return res.json();
     })
     .then(res => {
-      console.log('res2 is ', res);
+      console.log('%cfetch res is ','color: green', res);
       const { code, msg } = res;
       if (code !== 200) {
         console.log(

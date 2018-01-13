@@ -8,8 +8,21 @@ import type { ImageListItem } from '../models/imageList';
 
 @connect(({ imageList }) => imageList)
 export default class ImageList extends Component {
+  state ={
+    pageIndex: 0,
+  }
   componentWillMount() {
     this.props.dispatch({ type: 'imageList/getImageList' });
+  }
+  _toNextPage = () => {
+    const pageIndex = this.state.pageIndex + 1
+    this.props.dispatch({ type: 'imageList/getImageList', pageIndex })
+    this._updatePageIndex(pageIndex)
+  }
+  _updatePageIndex = () => {
+    this.setState({
+      pageIndex,
+    })
   }
   render() {
     const { imageList } = this.props;

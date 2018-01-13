@@ -1,6 +1,7 @@
 import dva from 'dva';
 
 import './index.css';
+import { dispatchHelper } from './utils/dispatch';
 
 // 1. Initialize
 const app = dva({
@@ -19,3 +20,8 @@ app.router(require('./router'));
 
 // 5. Start
 app.start('#root');
+
+app.getStore = () => app._store
+
+dispatchHelper(app)
+export default app

@@ -3,6 +3,8 @@ import { connect } from 'react-redux';
 import { Icon } from 'antd';
 import 'antd/dist/antd.css';
 
+import { dispatch } from '../utils/dispatch'
+
 const RADIUS = 70;
 export default class NextBtn extends Component {
   state = {
@@ -15,11 +17,9 @@ export default class NextBtn extends Component {
   componentDidMount() {}
   componentWillUnmount() {}
   handleClick = () => {
-    console.log('this is:', this);
+    dispatch({ type: 'imageList/effect'})
   };
   handleMouseOver = e => {
-    console.log('handleMouseOver');
-    
     this.setState({
       divStyle: {
         backgroundColor: '#eee685'
@@ -30,8 +30,6 @@ export default class NextBtn extends Component {
     });
   };
   handleMouseOut = e => {
-    console.log('handleMouseOut');
-    
     this.setState({
       divStyle: {
         backgroundColor: '#ffa11a'
@@ -43,7 +41,6 @@ export default class NextBtn extends Component {
   };
   render() {
     const { divStyle, arrStyle } = this.state;
-    console.log('arrStyle is ', arrStyle);
     
     return (
       <div

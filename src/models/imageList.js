@@ -15,23 +15,27 @@ export type ImageListItem = {
 const _imageList: Array<ImageListItem> = [];
 const initialState = {
   imageList: _imageList,
-  ratioList: []
+  pageIndex: 0
 };
 const reducers = {
   loadImageList(preState, { imageList }) {
-    return { ...preState, imageList };
+    const pageIndex = preState.pageIndex + 1;
+    return { ...preState, imageList, pageIndex };
   },
-  loadRatioList(preState, { payload: { ratioList } }) {
-    return { ...preState, ratioList };
-  }
+
 };
 const effects = {
   *effect({ payload }, { put, call, select, take }) {
+    console.log('this is effect test');
+    
     yield 1;
   },
-  *getImageList(payload, { put, call }) {
+  *getImageList({ payload }, { put, call, select }) {
     try {
-      const {data: imageList}= yield call(getImageList, 0);
+      const { pageIndex } = yield select(({ imageList }) => imageList);
+      console.log('getImageList pageIndex is ', pageIndex);
+
+      const { data: imageList } = yield call(getImageList, pageIndex);
       yield put({ type: 'loadImageList', imageList });
     } catch (e) {
       console.log('getImageList  with error: ', e);

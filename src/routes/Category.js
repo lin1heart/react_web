@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Menu, Icon } from 'antd';
 
 import NextBtn from '../components/NextBtn'
 import ImageList from './ImageList'
-import { Menu, Icon } from 'antd';
+import { dispatch } from '../utils/dispatch'
 
 const IAMGE_TYPES = [
   { name: '全部', type: 0 },
@@ -12,7 +13,9 @@ const IAMGE_TYPES = [
     type: 1
   },
   { name: '和风', type: 2 },
-  { name: '大陆', type: 3 }
+  { name: '大陆', type: 3 },
+  { name: '耽美', type: 4 },
+  { name: '次元', type: 5 },
 ];
 const NOVEL_TYPES = [{ name: '上线中', type: 0 }, { name: 'test', type: 1 }];
 const VIDEO_TYPES = [
@@ -28,19 +31,21 @@ const MenuItemGroup = Menu.ItemGroup;
 @connect(({ imageList }) => imageList)
 export default class Category extends Component {
   componentWillMount() {}
-  componentDidMount() {}
+  componentDidMount() {
+    dispatch({ type: 'imageList/effect'})
+  }
   componentWillUnmount() {}
-  handleClick = e => {
-    console.log('click ', e);
+  _toNextPage = e => {
+    dispatch({ type: 'imageList/effect'})
   };
   render() {
     return (
       <div style={{display: 'flex'}}>
-        <LeftNavigator handleClick={this.handleClick} />
+        <LeftNavigator />
         <div style={{ display: 'inline-flex' }}>
         <ImageList/>
         </div>
-        <NextBtn />
+        <NextBtn onClick={this._toNextPage}/>
       </div>
     );
   }
