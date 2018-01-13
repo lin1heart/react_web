@@ -4,7 +4,7 @@ import {
   Route,
   Link,
   Switch,
-  BrowserRouter,
+  HashRouter,
 } from 'react-router-dom'
 import { connect } from 'react-redux'
 
@@ -17,7 +17,7 @@ import Category from './routes/Category'
 // @connect(({ navigator}) => navigator)
 function Navigator ({ history }) {
     return (
-      <BrowserRouter>
+      <HashRouter>
         <Switch>
           <Route path="/" exact component={Entry} />
           <Route path="/imageList" component={ImageList} />
@@ -25,7 +25,7 @@ function Navigator ({ history }) {
           <Route path="/uploadImage" component={UploadImage} />
           <Route path="/category" component={Category} />
         </Switch>
-      </BrowserRouter>
+      </HashRouter>
     );
 }
 

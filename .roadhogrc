@@ -10,7 +10,8 @@
     },
     "production": {
       "extraBabelPlugins": [
-        "transform-runtime"
+        "transform-runtime",
+        "transform-decorators-legacy"
       ]
     }
   }
