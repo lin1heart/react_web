@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Affix, Icon, Button, Radio } from 'antd';
 
-import NextBtn from '../components/NextBtn';
+import ImageBtn from '../components/ImageBtn';
 import ImageList from './ImageList';
 import { dispatch } from '../utils/dispatch';
 
@@ -46,7 +46,7 @@ export default class Category extends Component {
   render() {
     const { typeIndex, childIndex } = this.props;
     return (
-      <section style={styles.section}>
+      <section style={styles.full}>
         <Banner />
         <TopNavigator
           handleClick={this._handleClick}
@@ -54,10 +54,8 @@ export default class Category extends Component {
           childIndex={childIndex}
         />
         <div style={styles.container}>
-          <div style={{ display: 'inline-flex' }}>
-            <ImageList />
-          </div>
-          <NextBtn onClick={this._toNextPage} />
+          <ImageList />
+          <ImageBtn onClick={this._toNextPage} />
         </div>
       </section>
     );
@@ -73,6 +71,7 @@ const TopNavigator = props => {
             return (
               <Radio.Button
                 value={index}
+                key={code}
                 onClick={() => handleClick(index, typeIndex, code)}
               >
                 {name}
@@ -90,15 +89,19 @@ const TopNavigator = props => {
 };
 const Banner = () => {
   return (
-    <div style={styles.flexContainer}>
-      <h1 style={styles.imageTitle}>welcome to maldives holiday</h1>
-      <h2 style={styles.imameSubTitle}>sail and sail</h2>
-      <h3 style={styles.imageText}>你那边的世界需要拯救吗</h3>
+    <div style={styles.full}>
+      <div style={styles.flexContainer}>
+        <h1 style={styles.imageTitle}>welcome to maldives holiday</h1>
+        <h2 style={styles.imameSubTitle}>sail and sail</h2>
+      </div>
+      <div style={{ height: '10%', display: 'flex' }}>
+        <h3 style={styles.middleText}>这边的世界需要您的拯救</h3>
+      </div>
     </div>
   );
 };
 const styles = {
-  section: {
+  full: {
     width: '100%',
     height: '100%'
   },
@@ -106,7 +109,10 @@ const styles = {
     display: 'flex',
     width: '70%',
     marginLeft: '15%',
-    border: 'solid red 2px'
+    // border: 'solid red 2px',
+    position: 'relative',
+    minHeight: '100px',
+
   },
   flexContainer: {
     display: 'flex',
@@ -128,11 +134,10 @@ const styles = {
     marginTop: '1rem',
     fontSize: '2rem'
   },
-  imageText: {
-    color: '#fff',
+  middleText: {
     fontSize: '1rem',
-    position: 'absolute',
-    top: '1rem',
-    left: '1rem',
-  },
+    display: 'inline-flex',
+    alignSelf: 'center',
+    marginLeft: '1.5rem'
+  }
 };

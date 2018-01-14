@@ -6,7 +6,7 @@ import 'antd/dist/antd.css';
 import { dispatch } from '../utils/dispatch'
 
 const RADIUS = 70;
-export default class NextBtn extends Component {
+export default class ImageBtn extends Component {
   state = {
     hoverStyle: {},
     arrStyle: {
@@ -64,9 +64,10 @@ const styles = {
     height: RADIUS,
     backgroundColor: '#ffa11a',
     borderRadius: RADIUS / 2,
-    position: 'fixed',
-    left: '80%',
-    top: '80%',
+    position: 'absolute',
+    bottom: '1.5rem',
+    right: '1.5rem',
+    boxSizing: 'border-box',
     boxShadow: '1px 1px 8px  #3300cc',
 
     display: 'flex',
