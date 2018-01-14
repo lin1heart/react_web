@@ -14,7 +14,7 @@ export type ImageListItem = {
 const _imageList: Array<ImageListItem> = [];
 const initialState = {
   imageList: _imageList,
-  pageIndex: 0
+  pageIndex: 0 // next page index
 };
 const reducers = {
   loadImageList(preState, { imageList, pageIndex }) {
@@ -37,12 +37,17 @@ const effects = {
 
     yield 1;
   },
-  *getImageList({ payload:type }, { put, call, select }) {
+  *getImageList({ payload: type }, { put, call, select }) {
     try {
       console.log('type is ', type);
-      
+
       const { data: imageList } = yield call(getImageList, 0, 10, type);
-        yield put({ type: 'loadImageList', imageList: imageList|| [], pageIndex: 1 });
+      yield put({
+        type: 'loadImageList',
+        imageList: imageList || [],
+        pageIndex: 1
+      });
+      yield put({ type: 'app/updateChildIndex', childIndex: type });
     } catch (e) {
       console.log('getImageList  with error: ', e);
     }
@@ -50,8 +55,10 @@ const effects = {
   *getMoreImageList({ payload }, { put, call, select }) {
     try {
       const { pageIndex } = yield select(({ imageList }) => imageList);
-      console.log('getMoreImageList pageIndex is ', pageIndex);
-      const { data: imageList } = yield call(getImageList, pageIndex);
+      const { childIndex } = yield select(({app})=> app)
+
+      console.log('getMoreImageList pageIndex is ', pageIndex, childIndex);
+      const { data: imageList } = yield call(getImageList, pageIndex, 10, childIndex);
       if (Array.isArray(imageList)) {
         yield put({ type: 'loadMoreImageList', imageList });
       } else {

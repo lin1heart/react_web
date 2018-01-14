@@ -2,7 +2,8 @@
 .container {
   display: flex;
   flex-wrap: wrap;
-  padding: 5px 10% ;
+  min-height: 100px;
+  /* padding: 5px 10% ; */
 }
 .container::after {
   content: '';
@@ -27,7 +28,6 @@
   position: absolute;
   height: 3rem;
   background-color: #0005;
-  z-index: 100;
   bottom: 0rem;
   display: flex;
   align-items: center;

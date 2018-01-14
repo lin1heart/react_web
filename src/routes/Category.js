@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Menu, Icon } from 'antd';
+import { Affix, Icon, Button, Radio } from 'antd';
 
 import NextBtn from '../components/NextBtn';
 import ImageList from './ImageList';
@@ -31,73 +31,72 @@ const CATEGORY = [
     children: [{ name: '上线中', code: 0 }]
   }
 ];
-const SubMenu = Menu.SubMenu;
-const MenuItemGroup = Menu.ItemGroup;
 
-@connect(({ imageList }) => imageList)
+@connect(({ app }) => app)
 export default class Category extends Component {
   componentWillMount() {}
-  componentDidMount() {
-    dispatch({ type: 'imageList/effect' });
-    console.log('Category props is ',this.props);
-    
+  componentDidMount() {}
+  componentWillUnmount() {
+    console.log('willun');
   }
-  componentWillUnmount() {}
-  _toNextPage = e => {
-    dispatch({ type: 'imageList/effect' });
+  _handleClick = (childIndex, typeIndex, code) => {
+    console.log('childIndex, typeIndex, code is ', childIndex, typeIndex, code);
+    dispatch({ type: 'imageList/getImageList', payload: code });
   };
-  _handleClick = (e) => {
-    console.log('e is ', e);
-    const {keyPath  } =e 
-    const childCode = keyPath[0]
-    const type = childCode.split('/')[1]
-    dispatch({ type: 'imageList/getImageList',  payload: type })
-  }
   render() {
+    const { typeIndex, childIndex } = this.props;
     return (
-      <div style={{ display: 'flex' }}>
-        <LeftNavigator handleClick={this._handleClick}/>
-        <div style={{ display: 'inline-flex' }}>
-          <ImageList />
+      <section style={{ width: '100%', height: '100%' }}>
+        <div style={{ width: '100%', height: '70%' }}>你要假装看风景</div>
+        <TopNavigator
+          handleClick={this._handleClick}
+          typeIndex={typeIndex}
+          childIndex={childIndex}
+        />
+        <div style={styles.container}>
+          <div style={{ display: 'inline-flex' }}>
+            <ImageList />
+          </div>
+          <NextBtn onClick={this._toNextPage} />
         </div>
-        <NextBtn onClick={this._toNextPage} />
-      </div>
+      </section>
     );
   }
 }
-const LeftNavigator = props => {
-  const { handleClick } = props;
+const TopNavigator = props => {
+  const { handleClick, typeIndex, childIndex } = props;
   return (
-    <Menu
-      onClick={handleClick}
-      style={{ width: 256 }}
-      defaultSelectedKeys={['image/0']}
-      defaultOpenKeys={['image']}
-      mode="inline"
-    >
-      {CATEGORY.map(({ code, name, children }) => {
-        return (
-          <SubMenu
-            key={code}
-            title={
-              <span>
-                <Icon type="mail" />
-                <span>name</span>
-              </span>
-            }
-          >
-            {children.map(({ name, code: code1 }, index) => {
-              return <Menu.Item key={code +'/'+ code1}>{name}</Menu.Item>;
-            })}
-          </SubMenu>
-        );
-      })}
-    </Menu>
+    <Affix>
+      <div style={{ background: 'rgb(190, 200, 200)', padding: '16px' }}>
+        <Radio.Group value={childIndex}>
+          {CATEGORY[typeIndex].children.map(({ name, code }, index) => {
+            return (
+              <Radio.Button
+                value={index}
+                onClick={() => handleClick(index, typeIndex, code)}
+              >
+                {name}
+              </Radio.Button>
+            );
+          })}
+        </Radio.Group>
+        <Button.Group style={{float: 'right'}}>
+          <Button>登陆</Button>
+          <Button>注册</Button>
+        </Button.Group>
+      </div>
+    </Affix>
   );
 };
 
 const styles = {
   inine: {
     width: 1
+  },
+  container: {
+    display: 'flex',
+    width: '70%',
+    marginLeft: '15%',
+    border: 'solid red 2px'
   }
 };
