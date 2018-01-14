@@ -46,8 +46,8 @@ export default class Category extends Component {
   render() {
     const { typeIndex, childIndex } = this.props;
     return (
-      <section style={{ width: '100%', height: '100%' }}>
-        <div style={{ width: '100%', height: '70%' }}>你要假装看风景</div>
+      <section style={styles.section}>
+        <Banner />
         <TopNavigator
           handleClick={this._handleClick}
           typeIndex={typeIndex}
@@ -80,7 +80,7 @@ const TopNavigator = props => {
             );
           })}
         </Radio.Group>
-        <Button.Group style={{float: 'right'}}>
+        <Button.Group style={{ float: 'right' }}>
           <Button>登陆</Button>
           <Button>注册</Button>
         </Button.Group>
@@ -88,15 +88,51 @@ const TopNavigator = props => {
     </Affix>
   );
 };
-
+const Banner = () => {
+  return (
+    <div style={styles.flexContainer}>
+      <h1 style={styles.imageTitle}>welcome to maldives holiday</h1>
+      <h2 style={styles.imameSubTitle}>sail and sail</h2>
+      <h3 style={styles.imageText}>你那边的世界需要拯救吗</h3>
+    </div>
+  );
+};
 const styles = {
-  inine: {
-    width: 1
+  section: {
+    width: '100%',
+    height: '100%'
   },
   container: {
     display: 'flex',
     width: '70%',
     marginLeft: '15%',
     border: 'solid red 2px'
-  }
+  },
+  flexContainer: {
+    display: 'flex',
+    background: 'url("./maldives.jpg") no-repeat center ',
+    width: '100%',
+    height: '90%',
+    justifyContent: 'center',
+    alignItems: 'center',
+    flexDirection: 'column'
+  },
+  imageTitle: {
+    display: 'inline-flex',
+    color: '#fff',
+    fontSize: '2.5rem'
+  },
+  imameSubTitle: {
+    display: 'inline-flex',
+    color: '#fff',
+    marginTop: '1rem',
+    fontSize: '2rem'
+  },
+  imageText: {
+    color: '#fff',
+    fontSize: '1rem',
+    position: 'absolute',
+    top: '1rem',
+    left: '1rem',
+  },
 };
