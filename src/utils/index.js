@@ -6,7 +6,7 @@ const toast = (msg) => {
     notification.info({
         description: msg,
         duration: 2,
-        message: '咳咳',
+        message: '[smile]',
     })
 }
 

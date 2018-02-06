@@ -1,4 +1,4 @@
-import { SERVER_URL, IMAGE_URL } from '../utils/config';
+import { SERVER_URL, IMAGE_URL, UPLOAD_URL } from '../utils/config';
 import fetch from '../utils/fetch';
 
 export const getImageList = (
@@ -11,4 +11,9 @@ export const getImageList = (
 
 export const getImageDetail = (id: string) => {
   return fetch.get(SERVER_URL + 'image/getDetail', { id });
+};
+
+
+export const uploadImage = (title: string, images: array) => {
+  return fetch.post(UPLOAD_URL + 'image/upload', { title, images });
 };
