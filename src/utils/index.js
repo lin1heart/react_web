@@ -10,4 +10,5 @@ const toast = (msg) => {
     })
 }
 
-export {fetch, toast }
+export default fetch
+export { fetch, toast }

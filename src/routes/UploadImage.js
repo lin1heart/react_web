@@ -1,24 +1,14 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import { toast } from '../utils'
-import 'antd/dist/antd.css';
+import { toast } from '../utils';
+import { uploadImage } from '../services/api';
 import { IMAGE_URL, SERVER_URL, UPLOAD_URL } from '../utils/config.js';
 
 export default class UploadImage extends Component {
   state = {
     path: ''
   };
-  componentWillMount() {}
-  componentDidMount() {}
-  componentWillUnmount() {}
-  handleChange = event => {
-    console.log('event.target.value is ', event.target.value, event);
-  };
-  handleFileChange = e => {
-    console.log('file change is ', e.target.value, e);
-  };
-
   uploadPic = () => {
     const { form, files } = this;
     let formData = new FormData(form);
@@ -29,24 +19,10 @@ export default class UploadImage extends Component {
     // }
     console.log('title is ', formData.get('title'));
     console.log('images is ', formData.get('images'));
-    fetch(UPLOAD_URL + 'image/upload', {
-      method: 'post',
-      body: formData
-    })
-      .then(res => res.json())
-      .then(res => {
-        console.log('res is ', res);
-        toast('上传成功')
-      })
-      .catch(e => {
-        console.log('upload with error', e);
-      });
+    uploadImage(formData);
   };
   onChange = e => {
-    console.log('onchange is ', e.target.value);
-    this.setState({
-      path: e.target.value
-    });
+    console.log('images onchange is ', e.target.value);
   };
   render() {
     return (
@@ -59,10 +35,7 @@ export default class UploadImage extends Component {
           encType="multipart/form-data"
           method="post"
         >
-          <input
-            type="text"
-            name="title"
-          />
+          <input type="text" name="title" />
           <input
             type="file"
             ref={e => {

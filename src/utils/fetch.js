@@ -37,7 +37,7 @@ const post = (
 
 export default {
   get,
-  post
+  post,
 };
 
 const obj2urlParams = (obj: Object): string => {
