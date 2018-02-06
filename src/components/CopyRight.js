@@ -5,10 +5,7 @@ import config from '../utils/config'
 
 export default class Copyright extends PureComponent {
   render() {
-    console.log('C_WIDTH ', config.C_WIDTH)
-    console.log('C_HEIGHT ', config.C_HEIGHT)
     const { containerStyle } = this.props
-    console.log('containerStyle is ', containerStyle)
     return (
       <section style={{ ...styles.flexContainer, ...containerStyle }}>
         <span style={styles.item}>CopyRight</span>
