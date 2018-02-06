@@ -1,36 +1,36 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
+import React, { Component } from 'react'
+import { connect } from 'react-redux'
 
-import { toast } from '../utils';
-import { uploadImage } from '../services/api';
-import { IMAGE_URL, SERVER_URL, UPLOAD_URL } from '../utils/config.js';
+import { toast } from '../utils'
+import { uploadImage } from '../services/api'
+import { IMAGE_URL, SERVER_URL, UPLOAD_URL } from '../utils/config.js'
 
 export default class UploadImage extends Component {
   state = {
     path: ''
-  };
+  }
   uploadPic = () => {
-    const { form, files } = this;
-    let formData = new FormData(form);
+    const { form, files } = this
+    let formData = new FormData(form)
     // const fileData = files.files;
     // for (let i = 0; i < fileData.length; i++) {
     //   const file = fileData[i];
     //   formData.append('images', file);
     // }
-    console.log('title is ', formData.get('title'));
-    console.log('images is ', formData.get('images'));
-    uploadImage(formData);
-  };
+    console.log('title is ', formData.get('title'))
+    console.log('images is ', formData.get('images'))
+    uploadImage(formData)
+  }
   onChange = e => {
-    console.log('images onchange is ', e.target.value);
-  };
+    console.log('images onchange is ', e.target.value)
+  }
   render() {
     return (
       <div>
         <form
           id="upload"
           ref={e => {
-            this.form = e;
+            this.form = e
           }}
           encType="multipart/form-data"
           method="post"
@@ -39,7 +39,7 @@ export default class UploadImage extends Component {
           <input
             type="file"
             ref={e => {
-              this.files = e;
+              this.files = e
             }}
             name="images"
             id="pic"
@@ -56,8 +56,8 @@ export default class UploadImage extends Component {
           />
         </form>
       </div>
-    );
+    )
   }
 }
 
-UploadImage.propTypes = {};
+UploadImage.propTypes = {}

@@ -1,8 +1,8 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
+import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
 
-import styles from './Entry.css';
+import styles from './Entry.css'
 
 @connect(({ imageList }) => imageList)
 export default class eEntry extends Component {
@@ -22,7 +22,7 @@ export default class eEntry extends Component {
         </Link>
         <span>仅供娱乐</span>
       </div>
-    );
+    )
   }
 }
 
@@ -32,11 +32,11 @@ const Notice = () => {
       <span className={styles.noticeText}>
         Welcome to oursite,Best wishes for every day!
       </span>
-      <br/>
+      <br />
       <span className={styles.noticeText}>
         Waring:The site contain adult content,no entry for less than
         18-Years-Old!
       </span>
     </div>
-  );
-};
+  )
+}

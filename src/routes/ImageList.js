@@ -1,47 +1,47 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { PropTypes } from 'prop-types';
+import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import { PropTypes } from 'prop-types'
 
-import styles from './ImageList.css';
-import { IMAGE_URL } from '../utils/config';
+import styles from './ImageList.css'
+import { IMAGE_URL } from '../utils/config'
 
-import type { ImageListItem } from '../models/imageList';
+import type { ImageListItem } from '../models/imageList'
 
 @connect(({ imageList }) => imageList)
 export default class ImageList extends Component {
   state = {
     pageIndex: 0
-  };
+  }
   static contextTypes = {
     router: PropTypes.object.isRequired
-  };
+  }
   componentWillMount() {
     if (this.context.router.history.action === 'PUSH') {
-      this.props.dispatch({ type: 'imageList/getImageList' });
+      this.props.dispatch({ type: 'imageList/getImageList' })
     }
   }
   _toNextPage = () => {
-    const pageIndex = this.state.pageIndex + 1;
-    this.props.dispatch({ type: 'imageList/getImageList', pageIndex });
-    this._updatePageIndex(pageIndex);
-  };
+    const pageIndex = this.state.pageIndex + 1
+    this.props.dispatch({ type: 'imageList/getImageList', pageIndex })
+    this._updatePageIndex(pageIndex)
+  }
   _updatePageIndex = () => {
     this.setState({
       pageIndex
-    });
-  };
+    })
+  }
   _onClick = id => {
-    this.context.router.history.push('/imageDetail/' + id);
-  };
+    this.context.router.history.push('/imageDetail/' + id)
+  }
   _onMouseOver = id => {
-    console.log('_onMouseOver', id);
-  };
+    console.log('_onMouseOver', id)
+  }
   _onMouseOut = id => {
-    console.log('_onMouseOut', id);
-  };
+    console.log('_onMouseOut', id)
+  }
   render() {
-    const { imageList } = this.props;
-    console.log('ImageList this is ', this);
+    const { imageList } = this.props
+    console.log('ImageList this is ', this)
     return (
       <section className={styles.container}>
         {imageList.map((item, index) => {
@@ -51,8 +51,8 @@ export default class ImageList extends Component {
             headImage,
             id,
             title
-          }: ImageListItem = item;
-          const aspectRatio = width / height;
+          }: ImageListItem = item
+          const aspectRatio = width / height
           return (
             <div
               className={styles.itemContainer}
@@ -71,12 +71,14 @@ export default class ImageList extends Component {
                 onClick={() => this._onClick(id)}
               />
               <div className={styles.titleWrapper}>
-                <span className={styles.titleText}>{title}</span>
+                <span className={styles.titleText}>
+                  {title}
+                </span>
               </div>
             </div>
-          );
+          )
         })}
       </section>
-    );
+    )
   }
 }

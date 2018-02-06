@@ -1,10 +1,10 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { Affix, Icon, Button, Radio } from 'antd';
+import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import { Affix, Icon, Button, Radio } from 'antd'
 
-import ImageBtn from '../components/ImageBtn';
-import ImageList from './ImageList';
-import { dispatch } from '../utils/dispatch';
+import ImageBtn from '../components/ImageBtn'
+import ImageList from './ImageList'
+import { dispatch } from '../utils/dispatch'
 
 const CATEGORY = [
   {
@@ -30,21 +30,21 @@ const CATEGORY = [
     code: 'video',
     children: [{ name: '上线中', code: 0 }]
   }
-];
+]
 
 @connect(({ app }) => app)
 export default class Category extends Component {
   componentWillMount() {}
   componentDidMount() {}
   componentWillUnmount() {
-    console.log('willun');
+    console.log('willun')
   }
   _handleClick = (childIndex, typeIndex, code) => {
-    console.log('childIndex, typeIndex, code is ', childIndex, typeIndex, code);
-    dispatch({ type: 'imageList/getImageList', payload: code });
-  };
+    console.log('childIndex, typeIndex, code is ', childIndex, typeIndex, code)
+    dispatch({ type: 'imageList/getImageList', payload: code })
+  }
   render() {
-    const { typeIndex, childIndex } = this.props;
+    const { typeIndex, childIndex } = this.props
     return (
       <section style={styles.full}>
         <Banner />
@@ -58,11 +58,11 @@ export default class Category extends Component {
           <ImageBtn onClick={this._toNextPage} />
         </div>
       </section>
-    );
+    )
   }
 }
 const TopNavigator = props => {
-  const { handleClick, typeIndex, childIndex } = props;
+  const { handleClick, typeIndex, childIndex } = props
   return (
     <Affix>
       <div style={{ background: 'rgb(190, 200, 200)', padding: '16px' }}>
@@ -76,7 +76,7 @@ const TopNavigator = props => {
               >
                 {name}
               </Radio.Button>
-            );
+            )
           })}
         </Radio.Group>
         <Button.Group style={{ float: 'right' }}>
@@ -85,8 +85,8 @@ const TopNavigator = props => {
         </Button.Group>
       </div>
     </Affix>
-  );
-};
+  )
+}
 const Banner = () => {
   return (
     <div style={styles.full}>
@@ -98,8 +98,8 @@ const Banner = () => {
         <h3 style={styles.middleText}>这边的世界需要您的拯救</h3>
       </div>
     </div>
-  );
-};
+  )
+}
 const styles = {
   full: {
     width: '100%',
@@ -111,8 +111,7 @@ const styles = {
     marginLeft: '15%',
     // border: 'solid red 2px',
     position: 'relative',
-    minHeight: '100px',
-
+    minHeight: '100px'
   },
   flexContainer: {
     display: 'flex',
@@ -140,4 +139,4 @@ const styles = {
     alignSelf: 'center',
     marginLeft: '1.5rem'
   }
-};
+}

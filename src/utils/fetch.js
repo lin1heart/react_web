@@ -1,12 +1,12 @@
 const get = (url: string, params: Object = {}): Promise => {
-  console.log('url + obj2urlParams(params) is ', url + obj2urlParams(params));
+  console.log('url + obj2urlParams(params) is ', url + obj2urlParams(params))
   return fetch(url + obj2urlParams(params))
     .then(res => {
-      return res.json();
+      return res.json()
     })
     .then(res => {
-      console.log('%cfetch res is ','color: green', res);
-      const { code, msg } = res;
+      console.log('%cfetch res is ', 'color: green', res)
+      const { code, msg } = res
       if (code !== 200) {
         console.log(
           '%cerror fetch get %s, %o with error',
@@ -14,12 +14,12 @@ const get = (url: string, params: Object = {}): Promise => {
           url,
           params,
           msg
-        );
-        return Promise.reject('fetch get %s, %o with error', url, params, msg);
+        )
+        return Promise.reject('fetch get %s, %o with error', url, params, msg)
       }
       return res
-    });
-};
+    })
+}
 const post = (
   url: string,
   requestBody: Object = {},
@@ -32,13 +32,13 @@ const post = (
       'Content-Type': 'application/json'
     },
     body: JSON.stringify(requestBody)
-  }).then(res => res.json());
-};
+  }).then(res => res.json())
+}
 
 export default {
   get,
-  post,
-};
+  post
+}
 
 const obj2urlParams = (obj: Object): string => {
   return Object.keys(obj).length === 0
@@ -47,5 +47,5 @@ const obj2urlParams = (obj: Object): string => {
         .filter(key => obj[key] !== undefined)
         .reduce((str, key) => `${str}${key}=${obj[key]}&`, '')
         .slice(0, -1)
-        .replace(/^/, '?');
-};
+        .replace(/^/, '?')
+}
