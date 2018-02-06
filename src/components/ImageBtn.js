@@ -1,24 +1,24 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { Icon } from 'antd';
-import 'antd/dist/antd.css';
+import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import { Icon } from 'antd'
+import 'antd/dist/antd.css'
 
 import { dispatch } from '../utils/dispatch'
 
-const RADIUS = 70;
+const RADIUS = 70
 export default class ImageBtn extends Component {
   state = {
     hoverStyle: {},
     arrStyle: {
       transform: 'scale(1)'
     }
-  };
+  }
   componentWillMount() {}
   componentDidMount() {}
   componentWillUnmount() {}
   handleClick = () => {
-    dispatch({ type: 'imageList/getMoreImageList'})
-  };
+    dispatch({ type: 'imageList/getMoreImageList' })
+  }
   handleMouseOver = e => {
     this.setState({
       divStyle: {
@@ -27,8 +27,8 @@ export default class ImageBtn extends Component {
       arrStyle: {
         transform: 'scale(1.3)'
       }
-    });
-  };
+    })
+  }
   handleMouseOut = e => {
     this.setState({
       divStyle: {
@@ -37,11 +37,11 @@ export default class ImageBtn extends Component {
       arrStyle: {
         transform: 'scale(1)'
       }
-    });
-  };
+    })
+  }
   render() {
-    const { divStyle, arrStyle } = this.state;
-    
+    const { divStyle, arrStyle } = this.state
+
     return (
       <div
         style={{ ...styles.btnWrapper, ...divStyle }}
@@ -54,7 +54,7 @@ export default class ImageBtn extends Component {
           style={{ fontSize: 25, color: '#08c', ...arrStyle }}
         />
       </div>
-    );
+    )
   }
 }
 
@@ -74,4 +74,4 @@ const styles = {
     justifyContent: 'center',
     alignItems: 'center'
   }
-};
+}

@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
+import Copyright from '../components/CopyRight'
 
 import styles from './Entry.css'
 
@@ -10,6 +11,7 @@ export default class eEntry extends Component {
   componentDidMount() {}
   componentWillUnmount() {}
   render() {
+
     return (
       <div className={styles.flexContainer}>
         <Notice />
@@ -21,6 +23,7 @@ export default class eEntry extends Component {
           uploadImage
         </Link>
         <span>仅供娱乐</span>
+        <Copyright containerStyle={{ position: 'absolute', bottom: 0 }} />
       </div>
     )
   }
