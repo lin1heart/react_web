@@ -13,3 +13,9 @@ div :global(#root) {
   margin: 0px;
   box-sizing: border-box;
 }
+section :global(#root) {
+  padding: 0px;
+  margin: 0px;
+  box-sizing: border-box;
+  display: flex;
+}

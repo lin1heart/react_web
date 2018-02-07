@@ -4,9 +4,16 @@ import propTypes from 'prop-types'
 import config from '../utils/config'
 
 export default class Logo extends PureComponent {
+  static contextTypes = {
+    router: propTypes.object.isRequired
+  }
+  toHome = () => {
+    const { history } = this.context.router
+    history.push('/')
+  }
   render() {
     const { containerStyle } = this.props
-    return <div style={{ ...styles.container, ...containerStyle }}>LOGO</div>
+    return <div onClick={this.toHome} style={{ ...styles.container, ...containerStyle }}>LOGO</div>
   }
 }
 Logo.defaultProps = {
