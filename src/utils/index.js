@@ -10,5 +10,7 @@ const toast = msg => {
   })
 }
 
+export const isClient = /Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)
+
 export default fetch
 export { fetch, toast }

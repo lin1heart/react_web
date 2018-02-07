@@ -5,6 +5,9 @@ import { Affix, Icon, Button, Radio } from 'antd'
 import ImageBtn from '../components/ImageBtn'
 import ImageList from './ImageList'
 import { dispatch } from '../utils/dispatch'
+import Logo from '../components/Logo'
+import { isClient } from '../utils'
+import LoginButtons from '../components/LoginButtons'
 
 const CATEGORY = [
   {
@@ -63,26 +66,27 @@ export default class Category extends Component {
 }
 const TopNavigator = props => {
   const { handleClick, typeIndex, childIndex } = props
+  console.log('isClient is ', isClient)
   return (
     <Affix>
-      <div style={{ background: 'rgb(190, 200, 200)', padding: '16px' }}>
-        <Radio.Group value={childIndex}>
-          {CATEGORY[typeIndex].children.map(({ name, code }, index) => {
-            return (
-              <Radio.Button
-                value={index}
-                key={code}
-                onClick={() => handleClick(index, typeIndex, code)}
-              >
-                {name}
-              </Radio.Button>
-            )
-          })}
-        </Radio.Group>
-        <Button.Group style={{ float: 'right' }}>
-          <Button>登陆</Button>
-          <Button>注册</Button>
-        </Button.Group>
+      <div style={{ background: 'rgb(190, 200, 200)', padding: '16px', display: 'flex', alignItems: 'center' }}>
+        <Logo containerStyle={{ display: 'inline' }} />
+        {!isClient
+          ? <Radio.Group value={childIndex}>
+              {CATEGORY[typeIndex].children.map(({ name, code }, index) => {
+                return (
+                  <Radio.Button
+                    value={index}
+                    key={code}
+                    onClick={() => handleClick(index, typeIndex, code)}
+                  >
+                    {name}
+                  </Radio.Button>
+                )
+              })}
+            </Radio.Group>
+          : null}
+        <LoginButtons />
       </div>
     </Affix>
   )
@@ -125,7 +129,8 @@ const styles = {
   imageTitle: {
     display: 'inline-flex',
     color: '#fff',
-    fontSize: '2.5rem'
+    fontSize: '2.5rem',
+    textAlign: 'center',
   },
   imameSubTitle: {
     display: 'inline-flex',

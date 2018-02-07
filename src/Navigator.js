@@ -14,7 +14,6 @@ function Navigator({ history }) {
     <HashRouter>
       <Switch>
         <Route path="/" exact component={Entry} />
-        <Route path="/imageList" component={ImageList} />
         <Route path="/imageDetail/:id" component={ImageDetail} />
         <Route path="/uploadImage" component={UploadImage} />
         <Route path="/category" component={Category} />
