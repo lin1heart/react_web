@@ -4,7 +4,7 @@ export const SERVER_URL = IP + '8080/'
 export const IMAGE_URL = IP + '8888/dbImage/'
 export const UPLOAD_URL = IP + '8888/'
 
-const BG_COLOR = '#f6f6f6'
+export const BG_COLOR = '#f6f6f6'
 
 export default {
   get C_WIDTH() {

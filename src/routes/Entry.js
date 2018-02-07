@@ -6,12 +6,8 @@ import Copyright from '../components/CopyRight'
 import styles from './Entry.css'
 
 @connect(({ imageList }) => imageList)
-export default class eEntry extends Component {
-  componentWillMount() {}
-  componentDidMount() {}
-  componentWillUnmount() {}
+export default class Entry extends Component {
   render() {
-
     return (
       <div className={styles.flexContainer}>
         <Notice />
@@ -32,13 +28,10 @@ export default class eEntry extends Component {
 const Notice = () => {
   return (
     <div className={styles.notice}>
-      <span className={styles.noticeText}>
-        Welcome to oursite,Best wishes for every day!
-      </span>
+      <span className={styles.noticeText}>Welcome to oursite,Best wishes for every day!</span>
       <br />
       <span className={styles.noticeText}>
-        Waring:The site contain adult content,no entry for less than
-        18-Years-Old!
+        Waring:The site contain adult content,no entry for less than 18-Years-Old!
       </span>
     </div>
   )

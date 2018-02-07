@@ -1,4 +1,4 @@
-const get = (url: string, params: Object = {}): Promise => {
+const get = (url, params = {}) => {
   console.log('url + obj2urlParams(params) is ', url + obj2urlParams(params))
   return fetch(url + obj2urlParams(params))
     .then(res => {
@@ -8,23 +8,13 @@ const get = (url: string, params: Object = {}): Promise => {
       console.log('%cfetch res is ', 'color: green', res)
       const { code, msg } = res
       if (code !== 200) {
-        console.log(
-          '%cerror fetch get %s, %o with error',
-          'color:red',
-          url,
-          params,
-          msg
-        )
+        console.log('%cerror fetch get %s, %o with error', 'color:red', url, params, msg)
         return Promise.reject('fetch get %s, %o with error', url, params, msg)
       }
       return res
     })
 }
-const post = (
-  url: string,
-  requestBody: Object = {},
-  params: Object = {}
-): Promise => {
+const post = (url, requestBody = {}, params = {}) => {
   return fetch(url + obj2urlParams(params), {
     method: 'POST',
     headers: {
@@ -40,7 +30,7 @@ export default {
   post
 }
 
-const obj2urlParams = (obj: Object): string => {
+const obj2urlParams = obj => {
   return Object.keys(obj).length === 0
     ? ''
     : Object.keys(obj)

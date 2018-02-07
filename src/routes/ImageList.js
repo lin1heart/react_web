@@ -5,8 +5,6 @@ import { PropTypes } from 'prop-types'
 import styles from './ImageList.css'
 import { IMAGE_URL } from '../utils/config'
 
-import type { ImageListItem } from '../models/imageList'
-
 @connect(({ imageList }) => imageList)
 export default class ImageList extends Component {
   state = {
@@ -45,13 +43,7 @@ export default class ImageList extends Component {
     return (
       <section className={styles.container}>
         {imageList.map((item, index) => {
-          const {
-            height = 200,
-            width = 200,
-            headImage,
-            id,
-            title
-          }: ImageListItem = item
+          const { height = 200, width = 200, headImage, id, title } = item
           const aspectRatio = width / height
           return (
             <div

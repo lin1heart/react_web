@@ -3,9 +3,9 @@ import myFetch from '../utils/fetch'
 import { toast } from '../utils'
 
 export const getImageList = (
-  pageIndex: number = 0,
-  pageSize: number = 10,
-  type: string = 0
+  pageIndex,
+  pageSize,
+  type
 ) => {
   return myFetch.get(SERVER_URL + 'image/getList', {
     pageIndex,
@@ -14,7 +14,7 @@ export const getImageList = (
   })
 }
 
-export const getImageDetail = (id: string) => {
+export const getImageDetail = (id) => {
   return myFetch.get(SERVER_URL + 'image/getDetail', { id })
 }
 

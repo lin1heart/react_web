@@ -2,16 +2,17 @@ import { toast, fetch } from '../utils'
 import { getImageList } from '../services/api'
 import { SERVER_URL, IMAGE_URL } from '../utils/config'
 
-export type ImageListItem = {
-  id: number,
-  title: string,
-  headImage: stirng,
-  type: number,
-  uploadDt?: string,
-  width: number,
-  height: number
-}
-const _imageList: Array<ImageListItem> = []
+// export type ImageListItem = {
+//   id: number,
+//   title: string,
+//   headImage: stirng,
+//   type: number,
+//   uploadDt?: string,
+//   width: number,
+//   height: number
+// }
+// const _imageList: Array<ImageListItem> = []
+const _imageList = []
 const initialState = {
   imageList: _imageList,
   pageIndex: 0 // next page index
@@ -58,12 +59,7 @@ const effects = {
       const { childIndex } = yield select(({ app }) => app)
 
       console.log('getMoreImageList pageIndex is ', pageIndex, childIndex)
-      const { data: imageList } = yield call(
-        getImageList,
-        pageIndex,
-        10,
-        childIndex
-      )
+      const { data: imageList } = yield call(getImageList, pageIndex, 10, childIndex)
       if (Array.isArray(imageList)) {
         yield put({ type: 'loadMoreImageList', imageList })
       } else {

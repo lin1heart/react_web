@@ -1,18 +1,23 @@
 {
   "entry": "src/index.js",
+  "externals": {
+    "react": "window.React",
+    "react-dom": "window.ReactDOM"
+  },
   "env": {
     "development": {
       "extraBabelPlugins": [
         "dva-hmr",
-        "transform-runtime",
         "transform-decorators-legacy"
       ]
     },
     "production": {
       "extraBabelPlugins": [
-        "transform-runtime",
         "transform-decorators-legacy"
       ]
     }
+  },
+  "html": {
+    "template": "./src/index.ejs"
   }
 }

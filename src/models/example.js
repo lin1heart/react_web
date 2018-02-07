@@ -1,27 +1,26 @@
-
 export default {
-
   namespace: 'example',
 
   state: {
-    aaaa: 233333,
+    aaaa: 233333
   },
 
   subscriptions: {
-    setup({ dispatch, history }) {  // eslint-disable-line
-    },
+    setup({ dispatch, history }) {
+      // eslint-disable-line
+    }
   },
 
   effects: {
-    *fetch({ payload }, { call, put }) {  // eslint-disable-line
-      yield put({ type: 'save' });
-    },
+    *fetch({ payload }, { call, put }) {
+      // eslint-disable-line
+      yield put({ type: 'save' })
+    }
   },
 
   reducers: {
     save(state, action) {
-      return { ...state, ...action.payload };
-    },
-  },
-
-};
+      return { ...state, ...action.payload }
+    }
+  }
+}
