@@ -23,8 +23,19 @@ export default class ImageDetail extends Component {
   componentWillUnmount() {}
   render() {
     const { data } = this.state
+    // return (
+    //   <section
+    //     style={{
+    //       width: '100%',
+    //       height: '100%',
+    //       alignItems: 'stretch',
+    //     }}
+    //   >
+    //     <div style={{  flex: 1 }} />
+    //   </section>
+    // )
     return (
-      <div style={styles.contaier}>
+      <section style={styles.container}>
         <header style={styles.header}>
           <div style={styles.ad}>this is ad</div>
           <div style={styles.ad}>this is ad2</div>
@@ -37,7 +48,7 @@ export default class ImageDetail extends Component {
           })}
         </section>
         <CopyRight />
-      </div>
+      </section>
     )
   }
 }
@@ -53,14 +64,15 @@ const styles = {
     width: '100%'
   },
   header: {
-    width: '100%',
+    width: '100%'
   },
   section: {
     flexDirection: 'column',
     padding: '0 10%',
+    display: 'inline-flex',
+    flex: 1
   },
   imageItem: {
-    width: '100%',
-    height: '100%',
+    width: '100%'
   }
 }

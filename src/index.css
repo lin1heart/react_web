@@ -8,14 +8,16 @@ body,
   box-sizing: border-box;
 }
 
-div :global(#root) {
+div {
   padding: 0px;
   margin: 0px;
   box-sizing: border-box;
+  background: purple;
 }
-section :global(#root) {
+section {
   padding: 0px;
   margin: 0px;
   box-sizing: border-box;
   display: flex;
+  background: green;
 }
