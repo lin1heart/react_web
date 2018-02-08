@@ -5,9 +5,15 @@ import { getImageDetail } from '../services/api'
 import { IMAGE_URL, BG_COLOR } from '../utils/config'
 import CopyRight from '../components/CopyRight'
 import TopNavigator from '../components/TopNavigator'
+import styled from 'styled-components'
 
 import stylesHelper from '../utils/stylesHelper.css'
 
+const Ad = styled.div`
+  border: 1px solid #ffa11a;
+  height: 40;
+  width: 100%;
+`
 export default class ImageDetail extends Component {
   state = {
     data: []
@@ -27,9 +33,9 @@ export default class ImageDetail extends Component {
     return (
       <div style={styles.container}>
         <header style={styles.header}>
-          <div style={styles.ad}>this is ad</div>
-          <div style={styles.ad}>this is ad2</div>
-          <div style={styles.ad}>this is ad3</div>
+          <Ad>this is ad 1</Ad>
+          <Ad>this is ad 1</Ad>
+          <Ad>this is ad 1</Ad>
         </header>
         <TopNavigator showCategory={false} />
         <section style={styles.section}>
@@ -37,7 +43,7 @@ export default class ImageDetail extends Component {
             const { url, id, height, width } = item
             return <img key={id} src={IMAGE_URL + url} style={styles.imageItem} />
           })}
-          <br/>
+          <br />
         </section>
         <CopyRight />
       </div>
@@ -68,6 +74,6 @@ const styles = {
     width: '100%',
     marginTop: 16,
     border: '1px #ffa11a solid',
-    borderRadius: 8,
+    borderRadius: 8
   }
 }

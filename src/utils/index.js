@@ -2,7 +2,7 @@ import { notification, message } from 'antd'
 
 import fetch from './fetch'
 
-const toast = () => {
+const toast = (msg) => {
   notification.info({
     description: msg,
     duration: 2,
