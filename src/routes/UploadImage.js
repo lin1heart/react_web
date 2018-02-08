@@ -1,10 +1,17 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import styled from 'styled-components'
 
+import DelImage from '../components/DelImage'
 import { toast } from '../utils'
 import { uploadImage } from '../services/api'
 import { IMAGE_URL, SERVER_URL, UPLOAD_URL } from '../utils/config.js'
 
+const PreViewContaienr = styled.div`
+  display: flex;
+  width: 100%;
+  padding: 8px;
+`
 export default class UploadImage extends Component {
   state = {
     path: '',
@@ -70,14 +77,9 @@ export default class UploadImage extends Component {
           />
           <input type="button" value="提交" onClick={this.uploadPic} />
           <span className="showUrl" />
-          <img
-            src=""
-            className="showPic"
-            alt=""
-            style={{ width: 100, height: 100, backgroundColor: 'red' }}
-          />
         </form>
         <PreView images={images} />
+        <DelImage />
       </div>
     )
   }
@@ -85,11 +87,11 @@ export default class UploadImage extends Component {
 const PreView = props => {
   const { images } = props
   return (
-    <section>
+    <PreViewContaienr>
       {images.map((item, index) => {
         return <img src={item} key={index} style={styles.imageItem} />
       })}
-    </section>
+    </PreViewContaienr>
   )
 }
 
@@ -98,5 +100,6 @@ const styles = {
   imageItem: {
     width: 100,
     height: 100,
+    marginRight: 8,
   }
 }

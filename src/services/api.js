@@ -2,16 +2,15 @@ import { SERVER_URL, IMAGE_URL, UPLOAD_URL } from '../utils/config'
 import myFetch from '../utils/fetch'
 import { toast } from '../utils'
 
-export const getImageList = (
-  pageIndex: number = 0,
-  pageSize: number = 10,
-  type: string = 0
-) => {
+export const getImageList = (pageIndex: number = 0, pageSize: number = 10, type: string = 0) => {
   return myFetch.get(SERVER_URL + 'image/getList', {
     pageIndex,
     pageSize,
     type
   })
+}
+export const delImageList = (ids: Array<string> = []) => {
+  return myFetch.post(SERVER_URL + 'image/deleteList', ids)
 }
 
 export const getImageDetail = (id: string) => {

@@ -7,16 +7,16 @@ body,
   margin: 0px;
   box-sizing: border-box;
 }
-:global(#root section) {
+/* :global(#root section) {
   padding: 0px;
   margin: 0px;
   box-sizing: border-box;
-  /* display: flex; */
-  /* background: green; */
+  display: flex;
+  background: green;
 }
 :global(#root div) {
   padding: 0px;
   margin: 0px;
   box-sizing: border-box;
-  /* background: purple; */
-}
+  background: purple;
+} */
