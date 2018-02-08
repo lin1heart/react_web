@@ -40,12 +40,12 @@ export default class TopNavigator extends Component {
     dispatch({ type: 'imageList/getImageList', payload: code })
   }
   render() {
-    const { handleClick, typeIndex, childIndex } = this.props
+    const { handleClick, typeIndex, childIndex, showCategory } = this.props
     return (
       <Affix>
         <header style={styles.topContainer}>
           <Logo containerStyle={{ display: 'inline' }} />
-          {!isClient
+          {!isClient && showCategory
             ? <Radio.Group value={childIndex}>
                 {CATEGORY[typeIndex].children.map(({ name, code }, index) => {
                   return (
@@ -65,6 +65,9 @@ export default class TopNavigator extends Component {
       </Affix>
     )
   }
+}
+TopNavigator.defaultProps = {
+  showCategory: true,
 }
 const styles = {
   topContainer: {

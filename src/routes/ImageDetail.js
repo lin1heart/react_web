@@ -4,8 +4,9 @@ import { connect } from 'react-redux'
 import { getImageDetail } from '../services/api'
 import { IMAGE_URL, BG_COLOR } from '../utils/config'
 import CopyRight from '../components/CopyRight'
+import TopNavigator from '../components/TopNavigator'
 
-
+import stylesHelper from '../utils/stylesHelper.css'
 
 export default class ImageDetail extends Component {
   state = {
@@ -24,20 +25,22 @@ export default class ImageDetail extends Component {
   render() {
     const { data } = this.state
     return (
-      <section style={styles.container}>
+      <div style={styles.container}>
         <header style={styles.header}>
           <div style={styles.ad}>this is ad</div>
           <div style={styles.ad}>this is ad2</div>
           <div style={styles.ad}>this is ad3</div>
         </header>
+        <TopNavigator showCategory={false} />
         <section style={styles.section}>
           {data.map((item, index) => {
             const { url, id, height, width } = item
             return <img key={id} src={IMAGE_URL + url} style={styles.imageItem} />
           })}
+          <br/>
         </section>
         <CopyRight />
-      </section>
+      </div>
     )
   }
 }
@@ -62,6 +65,9 @@ const styles = {
     flex: 1
   },
   imageItem: {
-    width: '100%'
+    width: '100%',
+    marginTop: 16,
+    border: '1px #ffa11a solid',
+    borderRadius: 8,
   }
 }
