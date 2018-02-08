@@ -27,11 +27,14 @@ export default class UploadImage extends Component {
     // }
     const title = formData.get('title')
     const images = formData.get('images')
+    const type = formData.get('type')
     if (!title) {
       toast.error('请输入标题')
       return
-    }
-    if (images.size === 0) {
+    } else if (!type) {
+      toast.error('请输入类别')
+      return
+    } else if (images.size === 0) {
       toast.error('请选择文件')
       return
     }
@@ -63,7 +66,8 @@ export default class UploadImage extends Component {
           encType="multipart/form-data"
           method="post"
         >
-          <input type="text" name="title" />
+          <input type="text" placeholder={'请输入title'} name="title" />
+          <input type="text" placeholder={'请输入typeCode'} name="type" />
           <input
             type="file"
             ref={e => {
@@ -100,6 +104,6 @@ const styles = {
   imageItem: {
     width: 100,
     height: 100,
-    marginRight: 8,
+    marginRight: 8
   }
 }

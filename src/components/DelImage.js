@@ -73,6 +73,7 @@ export default class DelImage extends PureComponent {
           rowSelection={{ onChange: this.selectImages }}
           columns={columns}
           dataSource={imageList.map(item => ({ ...item, key: item.uploadDt }))}
+          pagination={false}
         />
       </div>
     )

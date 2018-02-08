@@ -2,7 +2,9 @@
   "parser": "babel-eslint",
   "globals": {
     "console": true,
-    "var2": false
+    "var2": false,
+    "FileReader": true,
+    "FormData": true
   },
   "rules": {
     "arrow-body-style": [0],
