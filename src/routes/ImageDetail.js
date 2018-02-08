@@ -5,6 +5,8 @@ import { getImageDetail } from '../services/api'
 import { IMAGE_URL, BG_COLOR } from '../utils/config'
 import CopyRight from '../components/CopyRight'
 
+
+
 export default class ImageDetail extends Component {
   state = {
     data: []
@@ -19,21 +21,8 @@ export default class ImageDetail extends Component {
       })
     })
   }
-  componentDidMount() {}
-  componentWillUnmount() {}
   render() {
     const { data } = this.state
-    // return (
-    //   <section
-    //     style={{
-    //       width: '100%',
-    //       height: '100%',
-    //       alignItems: 'stretch',
-    //     }}
-    //   >
-    //     <div style={{  flex: 1 }} />
-    //   </section>
-    // )
     return (
       <section style={styles.container}>
         <header style={styles.header}>
