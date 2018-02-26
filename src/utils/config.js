@@ -1,4 +1,4 @@
-const IP = 'http://52.77.16.226:'
+const IP = 'http://13.250.226.195:'
 
 export const SERVER_URL = IP + '8080/'
 export const IMAGE_URL = IP + '8888/dbImage/'
