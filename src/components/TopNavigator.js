@@ -5,7 +5,7 @@ import { Affix, Icon, Button, Radio } from 'antd'
 import { dispatch } from '../utils/dispatch'
 import { isClient } from '../utils'
 import Logo from './Logo'
-import LoginButtons from './login/LoginButtons'
+import Avatar from './login/Avatar'
 import { CATEGORY  } from '../utils/config'
 
 @connect(({ app }) => app)
@@ -35,7 +35,7 @@ export default class TopNavigator extends Component {
                 })}
               </Radio.Group>
             : null}
-          <LoginButtons />
+          <Avatar />
         </header>
       </Affix>
     )

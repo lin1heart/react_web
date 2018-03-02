@@ -7,7 +7,7 @@ const get = (url: string, params: Object = {}): Promise => {
       const { code, msg } = res
       if (code !== 200) {
         console.log('%cerror fetch get %s, %o with error', 'color:red', url, params, msg)
-        return Promise.reject('fetch get %s, %o with error', url, params, msg)
+        return Promise.reject(res)
       }
       return res
     })
@@ -15,6 +15,7 @@ const get = (url: string, params: Object = {}): Promise => {
 
 // post row data
 const post = (url: string, params: Object = {}): Promise => {
+  console.log('json start', url + obj2urlParams(params))
   return fetch(url + obj2urlParams(params), {
     method: 'POST',
     headers: {
@@ -36,6 +37,7 @@ const post = (url: string, params: Object = {}): Promise => {
 }
 // post row data
 const form = (url: string, params: Object = {}): Promise => {
+  console.log('form start', url + obj2urlParams(params))
   return fetch(url + obj2urlParams(params), {
     method: 'POST',
     headers: {

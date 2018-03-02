@@ -7,6 +7,7 @@ import SwipeableViews from 'react-swipeable-views'
 
 import Login from './Login'
 import Signup from './Signup'
+import { login } from '../../services/api';
 
 const styles = {
   headline: {
@@ -24,7 +25,8 @@ const styles = {
  */
 export default class Modal extends React.Component {
   state = {
-    open: true
+    open: false,
+    slideIndex: 0
   };
 
   handleOpen = () => {
@@ -34,12 +36,6 @@ export default class Modal extends React.Component {
   handleClose = () => {
     this.setState({ open: false })
   };
-  constructor (props) {
-    super(props)
-    this.state = {
-      slideIndex: 0
-    }
-  }
 
   handleChange = value => {
     this.setState({
@@ -47,20 +43,9 @@ export default class Modal extends React.Component {
     })
   };
   render () {
-    const actions = [
-      <FlatButton key={1} label="Cancel" primary={true} onClick={this.handleClose} />,
-      <FlatButton
-        key={2}
-        label="Submit"
-        primary={true}
-        disabled={true}
-        onClick={this.handleClose}
-      />
-    ]
-
+    console.log('this.state.open is', this.state)
     return (
       <div>
-        <RaisedButton label="Modal Dialog" onClick={this.handleOpen} />
         <Dialog
           // title="Dialog With Actions"
           // actions={actions}
@@ -76,8 +61,8 @@ export default class Modal extends React.Component {
               <Tab label="SIGNUP" value={1} />
             </Tabs>
             <SwipeableViews index={this.state.slideIndex} onChangeIndex={this.handleChange}>
-              <Login />
-              <Signup />
+              <Login handleClose={this.handleClose} />
+              <Signup handleClose={this.handleClose} />
             </SwipeableViews>
           </div>
         </Dialog>
