@@ -1,5 +1,5 @@
-// const IP = 'http://13.250.226.195:'
-const IP = 'http://localhost:'
+const IP = 'http://13.250.226.195:'
+// const IP = 'http://localhost:'
 
 export const SERVER_URL = IP + '8080/'
 export const IMAGE_URL = IP + '8888/dbImage/'
@@ -28,11 +28,11 @@ export const CATEGORY = [
     code: 'image',
     children: [
       { name: '全部', code: 0 },
-      { name: '今天', code: 1 },
-      { name: '的风', code: 2 },
-      { name: '儿有', code: 3 },
-      { name: '点喧', code: 4 },
-      { name: '嚣~', code: 5 }
+      { name: '风景', code: 1 },
+      { name: '宠物', code: 2 },
+      { name: '美女', code: 3 },
+      { name: '时尚', code: 4 },
+      { name: '科技', code: 5 }
       // { name: '全部', code: 0 },
       // { name: '欧美', code: 1 },
       // { name: '和风', code: 2 },
