@@ -1,7 +1,9 @@
-import React from 'react'
+import React, { Component } from 'react'
 
-const Example = () => {
-  return <div style={styles.red}>Example</div>
+class Example extends Component {
+  render () {
+    return <div style={styles.red}>Example</div>
+  }
 }
 
 Example.propTypes = {}

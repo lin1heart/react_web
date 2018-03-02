@@ -7,16 +7,15 @@ export default {
   },
 
   reducers: {
-    updateChildIndex(state, { childIndex }) {
-      console.log('uasdasd ,updateChildIndex is ', childIndex);
-      return { ...state, childIndex };
+    updateChildIndex (state, { childIndex }) {
+      console.log('uasdasd ,updateChildIndex is ', childIndex)
+      return { ...state, childIndex }
     }
   },
 
   effects: {
-    *fetch({ payload }, { call, put }) {
-      // eslint-disable-line
-      yield put({ type: 'save' });
+    *fetch ({ payload }, { call, put }) {
+      yield put({ type: 'save' })
     }
   }
-};
+}

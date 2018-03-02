@@ -1,5 +1,6 @@
 {
   "parser": "babel-eslint",
+  "extends": ["standard", "plugin:react/recommended"],
   "globals": {
     "console": true,
     "var2": false,

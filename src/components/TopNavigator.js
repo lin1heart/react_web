@@ -5,33 +5,8 @@ import { Affix, Icon, Button, Radio } from 'antd'
 import { dispatch } from '../utils/dispatch'
 import { isClient } from '../utils'
 import Logo from './Logo'
-import LoginButtons from './LoginButtons'
-
-const CATEGORY = [
-  {
-    name: '详情预览',
-    code: 'image',
-    children: [
-      { name: '全部', code: 0 },
-      { name: '欧美', code: 1 },
-      { name: '和风', code: 2 },
-      { name: '大陆', code: 3 },
-      { name: '耽美', code: 4 },
-      { name: '次元', code: 5 }
-    ]
-  },
-
-  {
-    name: '文学鉴赏',
-    code: 'novel',
-    children: [{ name: '上线中', code: 0 }, { name: 'test', code: 1 }]
-  },
-  {
-    name: '视频剖析',
-    code: 'video',
-    children: [{ name: '上线中', code: 0 }]
-  }
-]
+import LoginButtons from './login/LoginButtons'
+import { CATEGORY  } from '../utils/config'
 
 @connect(({ app }) => app)
 export default class TopNavigator extends Component {

@@ -30,7 +30,7 @@ const Banner = () => {
     <div style={styles.full}>
       <div style={styles.flexContainer}>
         <h1 style={styles.imageTitle}>welcome to maldives holiday</h1>
-        <h2 style={styles.imameSubTitle}>sail and sail</h2>
+        <h2 style={styles.imameSubTitle}>WYSIWYG</h2>
       </div>
       <div style={{ height: '10%', display: 'flex' }}>
         <h3 style={styles.middleText}>拯救世界银河小分队的密码花园</h3>

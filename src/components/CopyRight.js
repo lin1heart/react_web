@@ -1,10 +1,8 @@
 import React, { PureComponent } from 'react'
 import propTypes from 'prop-types'
 
-import config from '../utils/config'
-
 export default class Copyright extends PureComponent {
-  render() {
+  render () {
     const { containerStyle } = this.props
     return (
       <section style={{ ...styles.flexContainer, ...containerStyle }}>
@@ -33,6 +31,6 @@ const styles = {
     backgroundColor: '#f0f0f0'
   },
   item: {
-    margin: '0 10px',
+    margin: '0 10px'
   }
 }

@@ -8,4 +8,3 @@ export const dispatchHelper = app => {
   console.log('dispatchHelper start init')
   dispatch = app.getStore().dispatch
 }
-export default dispatch

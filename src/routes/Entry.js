@@ -6,10 +6,10 @@ import Copyright from '../components/CopyRight'
 import styles from './Entry.css'
 
 @connect(({ imageList }) => imageList)
-export default class eEntry extends Component {
-  componentWillMount() {}
-  componentDidMount() {}
-  componentWillUnmount() {}
+export default class Entry extends Component {
+  // componentWillMount() {}
+  // componentDidMount() {}
+  // componentWillUnmount() {}
   render() {
 
     return (
