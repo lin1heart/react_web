@@ -10,19 +10,21 @@ const reducers = {
 }
 const effects = {
   *login ({ name, pass }, { put, call }) {
-    console.log('login effect', name, pass)
-    yield 1
+    try {
+      const res = yield call(login, name, pass)
+      console.log('login res is ', res)
+    } catch (e) {
+      console.log('signup with error: ', e)
+    }
   },
   *signup ({ name, pass, mail }, { put, call }) {
     console.log('signup effect', name, pass, mail)
     try {
       const res = yield call(signup, name, pass, mail)
-      console.log('res is ', res)
+      console.log('signup res is ', res)
     } catch (e) {
-      toast(e.errMsg)
-      debug.throw(' with error', e)
+      console.log('signup with error: ', e)
     }
-    yield 1
   }
 }
 export default {
