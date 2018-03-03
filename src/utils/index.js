@@ -1,21 +1,16 @@
-import { notification, message } from 'antd'
 import moment from 'moment'
 
-import fetch from './fetch'
+import { dispatch } from './dispatch'
+export { fetch } from './fetch'
 
-const toast = msg => {
-  notification.info({
-    description: msg,
-    duration: 2,
-    message: '[smile]'
-  })
+const snackInfo = (message = 'system error', delay = 1000) => {
+  dispatch({ type: 'app/showSnack', message })
+  setTimeout(() => {
+    dispatch({ type: 'app/hideSnack' })
+  }, delay)
 }
-toast.error = msg => {
-  message.error(msg)
-}
-toast.warning = msg => {
-  message.warning(msg)
-}
+const toast = snackInfo
+
 export const isClient = /Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)
 export const StandardFormat = timestamp => {
   if (moment(timestamp).isValid()) {
@@ -23,5 +18,4 @@ export const StandardFormat = timestamp => {
   }
   return '-'
 }
-export default fetch
-export { fetch, toast }
+export { toast, dispatch, snackInfo }

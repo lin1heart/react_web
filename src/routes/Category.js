@@ -1,14 +1,18 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import Snackbar from 'material-ui/Snackbar';
 
 import ImageBtn from '../components/ImageBtn'
 import ImageList from './ImageList'
 import TopNavigator from '../components/TopNavigator'
+import { dispatch } from '../utils'
 
+@connect(({ app }) => app)
 export default class Category extends Component {
-  componentWillMount() {}
-  componentDidMount() {}
 
+  handleRequestClose = () => {
+    dispatch({ type: 'app/showSnack' })
+  };
   render() {
     console.log('category prosp is ', this.props)
     const { typeIndex, childIndex } = this.props
@@ -20,6 +24,13 @@ export default class Category extends Component {
           <ImageList />
           <ImageBtn onClick={this._toNextPage} />
         </div>
+        <Snackbar
+          open={this.props.showSnack}
+          message={this.props.snackMessage}
+          // action="undo"
+          // autoHideDuration={3000}
+          // onRequestClose={this.handleRequestClose}
+        />
       </section>
     )
   }

@@ -1,25 +1,11 @@
 import React from 'react'
 import Dialog from 'material-ui/Dialog'
-import FlatButton from 'material-ui/FlatButton'
-import RaisedButton from 'material-ui/RaisedButton'
 import { Tabs, Tab } from 'material-ui/Tabs'
 import SwipeableViews from 'react-swipeable-views'
 
 import Login from './Login'
 import Signup from './Signup'
-import { login } from '../../services/api';
 
-const styles = {
-  headline: {
-    fontSize: 24,
-    paddingTop: 16,
-    marginBottom: 12,
-    fontWeight: 400
-  },
-  slide: {
-    padding: 10
-  }
-}
 /**
  * A modal dialog can only be closed by selecting one of the actions.
  */
@@ -42,7 +28,7 @@ export default class Modal extends React.Component {
       slideIndex: value
     })
   };
-  render () {
+  render() {
     console.log('this.state.open is', this.state)
     return (
       <div>
