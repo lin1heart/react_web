@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { Affix, Icon, Button, Radio } from 'antd'
+import { Affix } from 'antd'
 
 import { dispatch } from '../utils/dispatch'
 import { isClient } from '../utils'
@@ -20,21 +20,6 @@ export default class TopNavigator extends Component {
       <Affix>
         <header style={styles.topContainer}>
           <Logo containerStyle={{ display: 'inline' }} />
-          {!isClient && showCategory
-            ? <Radio.Group value={childIndex}>
-                {CATEGORY[typeIndex].children.map(({ name, code }, index) => {
-                  return (
-                    <Radio.Button
-                      value={index}
-                      key={code}
-                      onClick={() => this._handleClick(index, typeIndex, code)}
-                    >
-                      {name}
-                    </Radio.Button>
-                  )
-                })}
-              </Radio.Group>
-            : null}
           <Avatar />
         </header>
       </Affix>

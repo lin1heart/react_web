@@ -16,8 +16,8 @@ export default {
     showSnack(state, { message = 'system error' }) {
       return { ...state, showSnack: true, snackMessage: message }
     },
-    hideSnack(state, { message }) {
-      return { ...state, showSnack: false, snackMessage: message }
+    hideSnack(state) {
+      return { ...state, showSnack: false, snackMessage: 'init' }
     }
   },
 

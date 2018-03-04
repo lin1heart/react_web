@@ -8,6 +8,7 @@ import ImageList from './ImageList'
 import TopNavigator from '../components/TopNavigator'
 import { dispatch, isClient } from '../utils'
 import ImageStatus from '../components/ImageStatus'
+import DrawMenu from '../components/DrawMenu'
 
 @connect(({ app }) => app)
 export default class Category extends Component {
@@ -25,6 +26,7 @@ export default class Category extends Component {
         <div style={styles.container}>
           <ImageList />
           <ImageStatus />
+          <DrawMenu />
         </div>
         <Snackbar
           open={this.props.showSnack}
@@ -54,7 +56,8 @@ const Banner = () => {
 const styles = {
   full: {
     width: '100%',
-    height: '100%'
+    height: '100%',
+    position: 'relative',
   },
   container: {
     display: 'flex',

@@ -13,7 +13,7 @@ export default class Status extends Component {
     }
     render() {
         const { status } = this.props
-        console.log('image status props is ', status);
+        // console.log('image status props is ', status);
         let StatusView = <CircularProgress size={30} thickness={3} />
         if (status === 'loaded') {
             StatusView = <FlatButton label="加载更多" fullWidth={true}

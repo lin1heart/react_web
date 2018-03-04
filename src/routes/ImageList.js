@@ -21,16 +21,6 @@ export default class ImageList extends Component {
       this.props.dispatch({ type: 'imageList/getImageList' })
     }
   }
-  _toNextPage = () => {
-    const pageIndex = this.state.pageIndex + 1
-    this.props.dispatch({ type: 'imageList/getImageList', pageIndex })
-    this._updatePageIndex(pageIndex)
-  }
-  _updatePageIndex = () => {
-    this.setState({
-      pageIndex
-    })
-  }
   _onClick = id => {
     this.context.router.history.push('/imageDetail/' + id)
   }
