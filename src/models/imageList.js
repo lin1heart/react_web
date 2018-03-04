@@ -11,24 +11,34 @@ export type ImageListItem = {
   width: number,
   height: number
 }
+type Status = 'loading' | 'noMore' | 'loaded'
+
 const _imageList: Array<ImageListItem> = []
+const _status: Status = 'loaded'
 const initialState = {
   imageList: _imageList,
-  pageIndex: 0 // next page index
+  pageIndex: 0, // next page index,
+  status: _status,
 }
 const reducers = {
   loadImageList(preState, { imageList, pageIndex }) {
     const newPageIndex = pageIndex || preState.pageIndex + 1
-    return { ...preState, imageList, pageIndex: newPageIndex }
+    const status = imageList.length < 10 ? 'noMore' : 'loaded'
+    return { ...preState, imageList, pageIndex: newPageIndex, status }
   },
   loadMoreImageList(preState, { imageList }) {
     const pageIndex = preState.pageIndex + 1
     const oldImageList = preState.imageList
+    const status = imageList.length < 10 ? 'noMore' : 'loaded'
     return {
       ...preState,
       imageList: [...oldImageList, ...imageList],
-      pageIndex
+      pageIndex,
+      status
     }
+  },
+  updataStatus(preState, { status }) {
+    return { ...preState, status }
   }
 }
 const effects = {
@@ -40,7 +50,7 @@ const effects = {
   *getImageList({ payload: type }, { put, call, select }) {
     try {
       console.log('type is ', type)
-
+      yield put({ type: 'updataStatus', status: 'loading' })
       const { data: imageList } = yield call(getImageList, 0, 10, type)
       yield put({
         type: 'loadImageList',
@@ -49,11 +59,13 @@ const effects = {
       })
       yield put({ type: 'app/updateChildIndex', childIndex: type })
     } catch (e) {
+      yield put({ type: 'updataStatus', status: 'loaded' })
       console.log('getImageList  with error: ', e)
     }
   },
   *getMoreImageList({ payload }, { put, call, select }) {
     try {
+      yield put({ type: 'updataStatus', status: 'loading' })
       const { pageIndex } = yield select(({ imageList }) => imageList)
       const { childIndex } = yield select(({ app }) => app)
 
@@ -70,6 +82,7 @@ const effects = {
         toast('没有更多了')
       }
     } catch (e) {
+      yield put({ type: 'updataStatus', status: 'loaded' })
       console.log('getImageList  with error: ', e)
     }
   }

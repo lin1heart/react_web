@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { PropTypes } from 'prop-types'
+import CircularProgress from 'material-ui/CircularProgress';
 
 import styles from './ImageList.css'
 import { IMAGE_URL } from '../utils/config'
@@ -34,16 +35,33 @@ export default class ImageList extends Component {
     this.context.router.history.push('/imageDetail/' + id)
   }
   _onMouseOver = id => {
-    console.log('_onMouseOver', id)
+    // console.log('_onMouseOver', id)
   }
   _onMouseOut = id => {
-    console.log('_onMouseOut', id)
+    // console.log('_onMouseOut', id)
+  }
+  handleWheel = (event) => {
+    //判断鼠标滚轮的上下滑动
+    let deta = event.deltaY;
+    if (deta > 0) {
+      this.setState({
+        indexs: 1
+      });
+      console.log(this.state.indexs + "bottom");
+    }
+    if (deta < 0) {
+      this.setState({
+        indexs: -1
+      });
+      console.log(this.state.indexs + "top");
+    }
+    console.log('event is ', event)
+
   }
   render() {
     const { imageList } = this.props
-    console.log('ImageList this is ', this)
     return (
-      <section className={styles.container}>
+      <section onWheel={this.handleWheel} className={styles.container}>
         {imageList.map((item, index) => {
           const {
             height = 200,

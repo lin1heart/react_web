@@ -1,11 +1,13 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import Snackbar from 'material-ui/Snackbar';
+import 'antd/dist/antd.css'
 
-import ImageBtn from '../components/ImageBtn'
+// import ImageBtn from '../components/ImageBtn'
 import ImageList from './ImageList'
 import TopNavigator from '../components/TopNavigator'
 import { dispatch, isClient } from '../utils'
+import ImageStatus from '../components/ImageStatus'
 
 @connect(({ app }) => app)
 export default class Category extends Component {
@@ -14,7 +16,7 @@ export default class Category extends Component {
     dispatch({ type: 'app/showSnack' })
   };
   render() {
-    console.log('category prosp is ', this.props)
+    // console.log('category prosp is ', this.props)
     const { typeIndex, childIndex } = this.props
     return (
       <section style={styles.full}>
@@ -22,7 +24,7 @@ export default class Category extends Component {
         <TopNavigator typeIndex={typeIndex} childIndex={childIndex} />
         <div style={styles.container}>
           <ImageList />
-          <ImageBtn onClick={this._toNextPage} />
+          <ImageStatus />
         </div>
         <Snackbar
           open={this.props.showSnack}
@@ -60,7 +62,8 @@ const styles = {
     marginLeft: isClient ? 0 : '15%',
     // border: 'solid red 2px',
     position: 'relative',
-    minHeight: '100px'
+    minHeight: '100px',
+    flexDirection: 'column',
   },
   flexContainer: {
     display: 'flex',
