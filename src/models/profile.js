@@ -21,13 +21,13 @@ const effects = {
       const res = yield call(login, name, pass)
       console.log('login res is ', res)
       yield put({ type: '_login', username: name, password: pass })
+      toast('login success')
     } catch (e) {
       toast(e.msg)
-      console.log('signup with error: ', e)
+      console.log('login with error: ', e)
     }
   },
   *signup ({ name, pass, mail }, { put, call }) {
-    console.log('signup effect', name, pass, mail)
     try {
       const res = yield call(signup, name, pass, mail)
       toast(res.msg)

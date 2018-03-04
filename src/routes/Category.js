@@ -5,7 +5,7 @@ import Snackbar from 'material-ui/Snackbar';
 import ImageBtn from '../components/ImageBtn'
 import ImageList from './ImageList'
 import TopNavigator from '../components/TopNavigator'
-import { dispatch } from '../utils'
+import { dispatch, isClient } from '../utils'
 
 @connect(({ app }) => app)
 export default class Category extends Component {
@@ -27,9 +27,9 @@ export default class Category extends Component {
         <Snackbar
           open={this.props.showSnack}
           message={this.props.snackMessage}
-          // action="undo"
-          // autoHideDuration={3000}
-          // onRequestClose={this.handleRequestClose}
+        // action="undo"
+        // autoHideDuration={3000}
+        // onRequestClose={this.handleRequestClose}
         />
       </section>
     )
@@ -56,8 +56,8 @@ const styles = {
   },
   container: {
     display: 'flex',
-    width: '70%',
-    marginLeft: '15%',
+    width: isClient ? '100%' : '70%',
+    marginLeft: isClient ? 0 : '15%',
     // border: 'solid red 2px',
     position: 'relative',
     minHeight: '100px'

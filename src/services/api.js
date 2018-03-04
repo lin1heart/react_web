@@ -18,10 +18,10 @@ export const getImageDetail = (id: string) => {
 }
 
 export const login = (username: string, password: string) => {
-  return myFetch.form(SERVER_URL + 'user/logon', { username, password })
+  return myFetch.params(SERVER_URL + 'user/logon', { username, password })
 }
 export const signup = (username: string, password: string, mail: string) => {
-  return myFetch.form(SERVER_URL + 'user/register', { username, password, mail })
+  return myFetch.params(SERVER_URL + 'user/register', { username, password, mail })
 }
 
 export const uploadImage = formData => {

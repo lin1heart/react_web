@@ -17,9 +17,7 @@ class Login extends Component {
     } else if (!pass) {
       toast('please input your user password')
     } else {
-      dispatch({ type: 'profile/login', name, pass }).then((e) => {
-        this.props.handleClose()
-      })
+      dispatch({ type: 'profile/login', name, pass })
     }
   };
   updateValue = (type, value) => {

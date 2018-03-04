@@ -16,7 +16,7 @@ const get = (url: string, params: Object = {}): Promise => {
 // post row data
 const post = (url: string, params: Object = {}): Promise => {
   console.log('json start', url + obj2urlParams(params))
-  return fetch(url + obj2urlParams(params), {
+  return fetch(url, {
     method: 'POST',
     headers: {
       // Accept: 'application/json',
@@ -36,15 +36,17 @@ const post = (url: string, params: Object = {}): Promise => {
     })
 }
 // post row data
-const form = (url: string, params: Object = {}): Promise => {
+const params = (url: string, params: Object = {}): Promise => {
   console.log('form start', url + obj2urlParams(params))
-  return fetch(url + obj2urlParams(params), {
+  const prarmsStr = obj2urlParams(params)
+  return fetch(url, {
     method: 'POST',
     headers: {
       // Accept: 'application/json',
-      'Content-Type': 'application/x-www-form-urlencoded'
+      'Content-Type': 'application/x-www-form-urlencoded',
     },
-    body: obj2urlParams(params)
+    credentials: 'include',
+    body: prarmsStr.substr(1, prarmsStr.length),
   })
     .then(res => res.json())
     .then(res => {
@@ -61,7 +63,7 @@ const form = (url: string, params: Object = {}): Promise => {
 export default {
   get,
   post,
-  form
+  params
 }
 
 const obj2urlParams = (obj: Object): string => {
