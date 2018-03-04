@@ -1,6 +1,8 @@
 const get = (url: string, params: Object = {}): Promise => {
   console.log('url + obj2urlParams(params) is ', url + obj2urlParams(params))
-  return fetch(url + obj2urlParams(params))
+  return fetch(url + obj2urlParams(params), {
+    credentials: 'include',
+  })
     .then(res => res.json())
     .then(res => {
       console.log('%c get url res is ', 'color: green', res)
@@ -22,6 +24,7 @@ const post = (url: string, params: Object = {}): Promise => {
       // Accept: 'application/json',
       'Content-Type': 'application/json;charset=UTF-8'
     },
+    credentials: 'include',
     body: JSON.stringify(params)
   })
     .then(res => res.json())
