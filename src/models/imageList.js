@@ -49,7 +49,7 @@ const effects = {
   },
   *getImageList({ payload: type }, { put, call, select }) {
     try {
-      console.log('type is ', type)
+      console.log('getImageList type is ', type)
       yield put({ type: 'updataStatus', status: 'loading' })
       const { data: imageList } = yield call(getImageList, 0, 10, type)
       yield put({

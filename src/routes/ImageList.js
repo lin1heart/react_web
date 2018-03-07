@@ -5,9 +5,41 @@ import CircularProgress from 'material-ui/CircularProgress';
 
 import styles from './ImageList.css'
 import { IMAGE_URL } from '../utils/config'
-
+import { dispatch } from '../utils/dispatch'
 import type { ImageListItem } from '../models/imageList'
 
+function getScrollTop() {
+  var scrollTop = 0, bodyScrollTop = 0, documentScrollTop = 0;
+  if (document.body) {
+    bodyScrollTop = document.body.scrollTop;
+  }
+  if (document.documentElement) {
+    documentScrollTop = document.documentElement.scrollTop;
+  }
+  scrollTop = (bodyScrollTop - documentScrollTop > 0) ? bodyScrollTop : documentScrollTop;
+  return scrollTop;
+}
+
+function getScrollHeight() {
+  var scrollHeight = 0, bodyScrollHeight = 0, documentScrollHeight = 0;
+  if (document.body) {
+    bodyScrollHeight = document.body.scrollHeight;
+  }
+  if (document.documentElement) {
+    documentScrollHeight = document.documentElement.scrollHeight;
+  }
+  scrollHeight = (bodyScrollHeight - documentScrollHeight > 0) ? bodyScrollHeight : documentScrollHeight;
+  return scrollHeight;
+}
+function getWindowHeight() {
+  var windowHeight = 0;
+  if (document.compatMode == "CSS1Compat") {
+    windowHeight = document.documentElement.clientHeight;
+  } else {
+    windowHeight = document.body.clientHeight;
+  }
+  return windowHeight;
+}
 @connect(({ imageList }) => imageList)
 export default class ImageList extends Component {
   state = {
@@ -33,20 +65,15 @@ export default class ImageList extends Component {
   handleWheel = (event) => {
     //判断鼠标滚轮的上下滑动
     let deta = event.deltaY;
-    if (deta > 0) {
-      this.setState({
-        indexs: 1
-      });
-      console.log(this.state.indexs + "bottom");
+    if (getScrollTop() + getWindowHeight() === getScrollHeight()) {
+      const { status } =this.props
+      if(status === 'loading' || status === 'noMore') {
+        console.log('return due to status is ', status)
+        return 
+      } else {
+        dispatch({ type: 'imageList/getMoreImageList' })
+      }
     }
-    if (deta < 0) {
-      this.setState({
-        indexs: -1
-      });
-      console.log(this.state.indexs + "top");
-    }
-    console.log('event is ', event)
-
   }
   render() {
     const { imageList } = this.props
