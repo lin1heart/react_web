@@ -3,12 +3,12 @@ import { connect } from 'react-redux'
 import Snackbar from 'material-ui/Snackbar';
 import 'antd/dist/antd.css'
 
-// import ImageBtn from '../components/ImageBtn'
 import ImageList from './ImageList'
 import TopNavigator from '../components/TopNavigator'
 import { dispatch, isClient } from '../utils'
 import ImageStatus from '../components/ImageStatus'
 import DrawMenu from '../components/DrawMenu'
+import Banner from '../components/Banner'
 
 @connect(({ app }) => app)
 export default class Category extends Component {
@@ -40,19 +40,7 @@ export default class Category extends Component {
   }
 }
 
-const Banner = () => {
-  return (
-    <div style={styles.full}>
-      <div style={styles.flexContainer}>
-        <h1 style={styles.imageTitle}>welcome to maldives holiday</h1>
-        <h2 style={styles.imameSubTitle}>WYSIWYG</h2>
-      </div>
-      <div style={{ height: '10%', display: 'flex' }}>
-        <h3 style={styles.middleText}>拯救世界银河小分队的密码花园</h3>
-      </div>
-    </div>
-  )
-}
+
 const styles = {
   full: {
     width: '100%',
@@ -77,22 +65,5 @@ const styles = {
     alignItems: 'center',
     flexDirection: 'column'
   },
-  imageTitle: {
-    display: 'inline-flex',
-    color: '#fff',
-    fontSize: '2.5rem',
-    textAlign: 'center'
-  },
-  imameSubTitle: {
-    display: 'inline-flex',
-    color: '#fff',
-    marginTop: '1rem',
-    fontSize: '2rem'
-  },
-  middleText: {
-    fontSize: '1rem',
-    display: 'inline-flex',
-    alignSelf: 'center',
-    marginLeft: '1.5rem'
-  }
+
 }

@@ -30,6 +30,6 @@ app.getStore = () => app._store
 
 dispatchHelper(app)
 
-// console.log = () => {}
+console.log = () => {}
 
 export default app
