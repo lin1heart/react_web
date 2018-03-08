@@ -8,6 +8,8 @@ export const UPLOAD_URL = IP + '8888/'
 
 export const BG_COLOR = '#f6f6f6'
 
+export const printLog = true
+
 export default {
   get C_WIDTH () {
     return document.body.clientWidth

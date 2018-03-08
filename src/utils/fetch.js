@@ -1,23 +1,58 @@
+import debug from './debug'
+
+const httpLogSwitch = true
+
 const get = (url: string, params: Object = {}): Promise => {
-  console.log('url + obj2urlParams(params) is ', url + obj2urlParams(params))
+  debug.custom(
+    {
+      color: 'green',
+      prefix: '__fetch__ get start ' + url,
+      show: httpLogSwitch
+    },
+    params
+  )
   return fetch(url + obj2urlParams(params), {
-    credentials: 'include',
+    credentials: 'include'
   })
     .then(res => res.json())
     .then(res => {
-      console.log('%c get url res is ', 'color: green', res)
+      debug.custom(
+        {
+          color: 'green',
+          prefix: '__fetch__ get receive ' + url,
+          show: httpLogSwitch
+        },
+        params
+      )
       const { code, msg } = res
       if (code !== 200) {
-        console.log('%cerror fetch get %s, %o with error', 'color:red', url, params, msg)
         return Promise.reject(res)
       }
       return res
+    })
+    .catch(e => {
+      debug.custom(
+        {
+          color: 'red',
+          prefix: '__fetch__ get receive reveive ERROR ' + url,
+          show: httpLogSwitch
+        },
+        params
+      )
+      throw e
     })
 }
 
 // post row data
 const post = (url: string, params: Object = {}): Promise => {
-  console.log('json start', url + obj2urlParams(params))
+  debug.custom(
+    {
+      color: 'green',
+      prefix: '__fetch__ post start ' + url,
+      show: httpLogSwitch
+    },
+    params
+  )
   return fetch(url, {
     method: 'POST',
     headers: {
@@ -29,37 +64,78 @@ const post = (url: string, params: Object = {}): Promise => {
   })
     .then(res => res.json())
     .then(res => {
-      console.log('%c post url res is ', 'color: green', res)
+      debug.custom(
+        {
+          color: 'green',
+          prefix: '__fetch__ POST receive ' + url,
+          show: httpLogSwitch
+        },
+        params
+      )
       const { code, msg } = res
       if (code !== 200) {
-        console.log('%cerror fetch get %s, %o with error', 'color:red', url, params, msg)
         return Promise.reject(res)
       }
       return res
     })
+    .catch(e => {
+      debug.custom(
+        {
+          color: 'red',
+          prefix: '__fetch__ post reveive ERROR ' + url,
+          show: httpLogSwitch
+        },
+        params
+      )
+      throw e
+    })
 }
 // post row data
 const params = (url: string, params: Object = {}): Promise => {
-  console.log('form start', url + obj2urlParams(params))
+  debug.custom(
+    {
+      color: 'green',
+      prefix: '__fetch__ params start ' + url,
+      show: httpLogSwitch
+    },
+    params
+  )
   const prarmsStr = obj2urlParams(params)
   return fetch(url, {
     method: 'POST',
     headers: {
       // Accept: 'application/json',
-      'Content-Type': 'application/x-www-form-urlencoded',
+      'Content-Type': 'application/x-www-form-urlencoded'
     },
     credentials: 'include',
-    body: prarmsStr.substr(1, prarmsStr.length),
+    body: prarmsStr.substr(1, prarmsStr.length)
   })
     .then(res => res.json())
     .then(res => {
-      console.log('%c post res is ', 'color: green', res)
+      debug.custom(
+        {
+          color: 'green',
+          prefix: '__fetch__ params receive ' + url,
+          show: httpLogSwitch
+        },
+        params
+      )
       const { code, msg } = res
       if (code !== 200) {
-        console.log('%cerror fetch get %s, %o with error', 'color:red', url, params, msg)
         return Promise.reject(res)
       }
       return res
+    })
+    .catch(e => {
+      debug.custom(
+        {
+          color: 'red',
+          prefix: '__fetch__ params reveive ERROR ' + url,
+          show: httpLogSwitch
+        },
+        params
+      )
+      throw e
     })
 }
 

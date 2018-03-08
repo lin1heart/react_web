@@ -4,13 +4,12 @@ import './index.css'
 import { dispatchHelper } from './utils/dispatch'
 import models from './models'
 import Router from './Navigator'
+import { printLog } from './utils/config'
 
 // 1. Initialize
-const app = dva(
-  {
-    // models: () => models,
-  }
-)
+const app = dva({
+  // models: () => models,
+})
 
 // 2. Plugins
 // app.use({});
@@ -30,6 +29,8 @@ app.getStore = () => app._store
 
 dispatchHelper(app)
 
-console.log = () => {}
+if (!printLog) {
+  console.log = () => {}
+}
 
 export default app
