@@ -4,18 +4,18 @@ import React from 'react'
 import Chip from 'material-ui/Chip'
 
 const Banner = () => {
-    return (
-      <div style={styles.full}>
-        <div style={styles.flexContainer}>
-          <h1 style={styles.imageTitle}>welcome to maldives holiday</h1>
-          <h2 style={styles.imameSubTitle}>WYSIWYG</h2>
-        </div>
-        <div style={{ height: '10%', display: 'flex' }}>
-          <h3 style={styles.middleText}>拯救世界银河小分队的密码花园</h3>
-        </div>
+  return (
+    <div style={styles.full}>
+      <div style={styles.flexContainer}>
+        <h1 style={styles.imageTitle}>welcome to maldives holiday</h1>
+        <h2 style={styles.imameSubTitle}>WYSIWYG</h2>
       </div>
-    )
-  }
+      <div style={{ height: '10%', display: 'flex' }}>
+        <h3 style={styles.middleText}>拯救世界银河小分队的密码花园</h3>
+      </div>
+    </div>
+  )
+}
 function handleRequestDelete () {
   alert('You clicked the delete button.')
 }
@@ -50,7 +50,11 @@ const data = [
   'redux',
   'redux-saga',
   'ES6',
+  'promise',
+  'ajax',
+  'fetch',
   'canvas',
+  'svg',
   'd3',
   'Html5',
   'CSS3',
@@ -110,8 +114,8 @@ export default Banner
 
 const styles = {
   full: {
-      width: '100%',
-      height: '100%',
+    width: '100%',
+    height: '100%',
     display: 'flex',
     flexWrap: 'wrap'
   },
