@@ -1,5 +1,5 @@
-const IP = 'http://13.250.226.195:'
-// const IP = 'http://192.168.0.103:'
+// const IP = 'http://13.250.226.195:'
+const IP = 'http://192.168.0.104:'
 // const IP = 'http://localhost:'
 
 export const SERVER_URL = IP + '8080/'
