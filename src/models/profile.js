@@ -44,11 +44,12 @@ const effects = {
       toast(e.msg)
       console.log('signup with error: ', e)
     }
-  }
+  },
+  
 }
 export default {
   namespace: 'profile',
   state: initialState,
   reducers,
-  effects
+  effects,
 }

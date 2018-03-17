@@ -1,7 +1,5 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import Snackbar from 'material-ui/Snackbar';
-import 'antd/dist/antd.css'
 
 import ImageList from './ImageList'
 import TopNavigator from '../components/TopNavigator'
@@ -28,13 +26,6 @@ export default class Category extends Component {
           <ImageStatus />
           <DrawMenu />
         </div>
-        <Snackbar
-          open={this.props.showSnack}
-          message={this.props.snackMessage}
-        // action="undo"
-        // autoHideDuration={3000}
-        // onRequestClose={this.handleRequestClose}
-        />
       </section>
     )
   }

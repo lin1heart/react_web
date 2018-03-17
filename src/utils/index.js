@@ -2,8 +2,9 @@ import moment from 'moment'
 
 import { dispatch } from './dispatch'
 export { fetch } from './fetch'
+import debug from './debug'
 
-const snackInfo = (message = 'system error', delay = 1000) => {
+const snackInfo = (message = 'system error', delay = 2000) => {
   dispatch({ type: 'app/showSnack', message })
   setTimeout(() => {
     dispatch({ type: 'app/hideSnack' })
@@ -18,4 +19,4 @@ export const StandardFormat = timestamp => {
   }
   return '-'
 }
-export { toast, dispatch, snackInfo }
+export { toast, dispatch, snackInfo, debug }

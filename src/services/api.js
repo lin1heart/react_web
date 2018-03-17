@@ -23,6 +23,9 @@ export const login = (username: string, password: string) => {
 export const signup = (username: string, password: string, mail: string) => {
   return myFetch.params(SERVER_URL + 'user/register', { username, password, mail })
 }
+export const version = () => {
+  return myFetch.get(SERVER_URL + 'user/version')
+}
 
 export const uploadImage = formData => {
   fetch(UPLOAD_URL + 'image/upload', {

@@ -7,4 +7,5 @@ export let dispatch = () => {
 export const dispatchHelper = app => {
   console.log('dispatchHelper start init')
   dispatch = app.getStore().dispatch
+  dispatch({ type: 'global/dispatch' })
 }
