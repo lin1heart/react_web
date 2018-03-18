@@ -1,5 +1,5 @@
 const IP = 'http://13.250.226.195:'
-// const IP = 'http://192.168.0.104:'
+// const IP = 'http://192.168.0.101:'
 // const IP = 'http://localhost:'
 
 export const SERVER_URL = IP + '8080/'
@@ -8,7 +8,7 @@ export const UPLOAD_URL = IP + '8888/'
 
 export const BG_COLOR = '#f6f6f6'
 
-export const printLog = false
+export const printLog = true
 
 export default {
   get C_WIDTH () {

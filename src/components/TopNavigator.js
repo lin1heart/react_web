@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Affix } from 'antd'
+import propTypes from 'prop-types'
+import FlatButton from 'material-ui/FlatButton';
 
 import { dispatch } from '../utils/dispatch'
 import { isClient } from '../utils'
@@ -10,9 +12,17 @@ import { CATEGORY  } from '../utils/config'
 
 @connect(({ app }) => app)
 export default class TopNavigator extends Component {
+  static contextTypes = {
+    router: propTypes.object.isRequired
+  }
   _handleClick = (childIndex, typeIndex, code) => {
     console.log('childIndex, typeIndex, code is ', childIndex, typeIndex, code)
     dispatch({ type: 'imageList/getImageList', payload: code })
+  }
+  _back = () => {
+    const { history } = this.context.router
+    console.log('history is ', history)
+    history.goBack()
   }
   render() {
     const { handleClick, typeIndex, childIndex, showCategory } = this.props
@@ -20,6 +30,7 @@ export default class TopNavigator extends Component {
       <Affix>
         <header style={styles.topContainer}>
           <Logo containerStyle={{ display: 'inline' }} />
+          <FlatButton label="BACK" onClick={this._back} />
           <Avatar />
         </header>
       </Affix>

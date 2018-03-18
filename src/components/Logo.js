@@ -1,5 +1,6 @@
 import React, { PureComponent } from 'react'
 import propTypes from 'prop-types'
+import FlatButton from 'material-ui/FlatButton';
 
 import config from '../utils/config'
 
@@ -13,7 +14,7 @@ export default class Logo extends PureComponent {
   }
   render() {
     const { containerStyle } = this.props
-    return <div onClick={this.toHome} style={{ ...styles.container, ...containerStyle }}>LOGO</div>
+    return <FlatButton label="LOGO" onClick={this.toHome}/>
   }
 }
 Logo.defaultProps = {

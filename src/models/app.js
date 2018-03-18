@@ -1,7 +1,6 @@
 import { version } from '../services/api'
 import { toast, debug } from '../utils'
 
-console.log()
 export default {
   namespace: 'app',
 
@@ -9,7 +8,9 @@ export default {
     typeIndex: 0,
     childIndex: 0,
     snackMessage: 'system error',
-    showSnack: false
+    showSnack: false,
+    dbCount: 1,
+    onlineCount: 1
   },
 
   reducers: {
@@ -22,6 +23,9 @@ export default {
     },
     hideSnack(state) {
       return { ...state, showSnack: false, snackMessage: 'init' }
+    },
+    updateCount(state, { dbCount, onlineCount }) {
+      return { ...state, dbCount, onlineCount}
     }
   },
 
@@ -30,11 +34,13 @@ export default {
     *version({ payload }, { call, put }) {
       console.log('version start')
       try {
-        const { data: username } = yield call(version)
-        console.log('username is ', username)
-        if(username) {
-          yield put({ type: 'profile/_login', username})
-          toast('お帰りなさい、' + username)
+        const res =  yield call(version)
+        console.log('version res is ', res)
+        const { dbCount, onlineCount, name = 'master' } = res.data || {}
+        if(res) {
+          yield put({ type: 'profile/_login', username: name })
+          toast('お帰りなさい、' + name)
+          yield put({ type: 'updateCount', dbCount, onlineCount })
         }
       } catch(e) {
         debug.fail('version fail')

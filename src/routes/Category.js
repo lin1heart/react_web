@@ -15,12 +15,12 @@ export default class Category extends Component {
     dispatch({ type: 'app/showSnack' })
   };
   render() {
-    // console.log('category prosp is ', this.props)
-    const { typeIndex, childIndex } = this.props
+    console.log('category prosp is ', this.props)
+    const { dbCount, onlineCount } = this.props
     return (
       <section style={styles.full}>
-        <Banner />
-        <TopNavigator typeIndex={typeIndex} childIndex={childIndex} />
+        <Banner dbCount={dbCount} onlineCount={onlineCount}/>
+        <TopNavigator />
         <div style={styles.container}>
           <ImageList />
           <ImageStatus />

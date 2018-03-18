@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import styled from 'styled-components'
 
 import DelImage from '../components/DelImage'
+import TopNavigator from '../components/TopNavigator'
 import { toast } from '../utils'
 import { uploadImage } from '../services/api'
 import { IMAGE_URL, SERVER_URL, UPLOAD_URL } from '../utils/config.js'
@@ -46,18 +47,19 @@ export default class UploadImage extends Component {
     for (let i = 0; i < files.length; i++) {
       let reader = new FileReader()
       reader.readAsDataURL(files[i])
-      reader.onload = function(e, t) {
+      reader.onload = function (e, t) {
         const { images: originImages } = _this.state
         originImages[i] = this.result
         _this.setState({ images: [...originImages] })
       }
     }
   }
-  onLoad = e => {}
+  onLoad = e => { }
   render() {
     const { images } = this.state
     return (
       <div>
+        <TopNavigator />
         <form
           id="upload"
           ref={e => {
@@ -66,8 +68,6 @@ export default class UploadImage extends Component {
           encType="multipart/form-data"
           method="post"
         >
-          <input type="text" placeholder={'请输入title'} name="title" />
-          <input type="text" placeholder={'请输入typeCode'} name="type" />
           <input
             type="file"
             ref={e => {
@@ -79,6 +79,8 @@ export default class UploadImage extends Component {
             onLoad={this.onLoad}
             multiple="multiple"
           />
+          <input type="text" placeholder={'请输入title'} name="title" />
+          <input type="text" placeholder={'请输入typeCode'} name="type" />
           <input type="button" value="提交" onClick={this.uploadPic} />
           <span className="showUrl" />
         </form>

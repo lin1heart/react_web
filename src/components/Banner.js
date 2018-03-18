@@ -3,12 +3,14 @@
 import React from 'react'
 import Chip from 'material-ui/Chip'
 
-const Banner = () => {
+const Banner = (props) => {
+  const { dbCount, onlineCount } = props
   return (
     <div style={styles.full}>
       <div style={styles.flexContainer}>
         <h1 style={styles.imageTitle}>welcome to maldives holiday</h1>
-        <h2 style={styles.imameSubTitle}>WYSIWYG</h2>
+        <h3 style={styles.imameSubTitle}>{'現在の人数:' + dbCount}</h3>
+        <h3 style={styles.imameSubTitle}>{'累計人数:' + onlineCount}</h3>
       </div>
       <div style={{ height: '10%', display: 'flex' }}>
         <h3 style={styles.middleText}>拯救世界银河小分队的密码花园</h3>
@@ -140,8 +142,7 @@ const styles = {
   imameSubTitle: {
     display: 'inline-flex',
     color: '#fff',
-    marginTop: '1rem',
-    fontSize: '2rem'
+    fontSize: '1rem'
   },
   middleText: {
     fontSize: '1rem',

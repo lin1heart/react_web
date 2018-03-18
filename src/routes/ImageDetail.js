@@ -32,11 +32,11 @@ export default class ImageDetail extends Component {
     const { data } = this.state
     return (
       <div style={styles.container}>
-        <header style={styles.header}>
+        {/* <header style={styles.header}>
           <Ad>this is ad 1</Ad>
           <Ad>this is ad 1</Ad>
           <Ad>this is ad 1</Ad>
-        </header>
+    </header> */}
         <TopNavigator showCategory={false} />
         <section style={styles.section}>
           {data.map((item, index) => {
@@ -45,6 +45,9 @@ export default class ImageDetail extends Component {
           })}
           <br />
         </section>
+        <div>
+          登陆之后可以查看更多哦
+        </div>
         <CopyRight />
       </div>
     )
