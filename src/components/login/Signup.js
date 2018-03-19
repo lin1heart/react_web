@@ -71,7 +71,7 @@ const styles = {
   container: {
     padding: 16,
     paddingTop: 0,
-    margin: 'auto',
+    margin: 'auto'
   },
   marginLeft: {
     marginLeft: 16

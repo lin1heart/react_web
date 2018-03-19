@@ -10,52 +10,55 @@ export default {
     snackMessage: 'system error',
     showSnack: false,
     dbCount: 1,
-    onlineCount: 1
+    onlineCount: 1,
+    selfCount: 1,
   },
 
   reducers: {
-    updateChildIndex(state, { childIndex }) {
+    updateChildIndex (state, { childIndex }) {
       console.log('uasdasd ,updateChildIndex is ', childIndex)
       return { ...state, childIndex }
     },
-    showSnack(state, { message = 'system error' }) {
+    showSnack (state, { message = 'system error' }) {
       return { ...state, showSnack: true, snackMessage: message }
     },
-    hideSnack(state) {
+    hideSnack (state) {
       return { ...state, showSnack: false, snackMessage: 'init' }
     },
-    updateCount(state, { dbCount, onlineCount }) {
-      return { ...state, dbCount, onlineCount}
+    updateCount (state, { dbCount, onlineCount, selfCount }) {
+      return { ...state, dbCount, onlineCount, selfCount }
     }
   },
 
   effects: {
- 
-    *version({ payload }, { call, put }) {
+    *version ({ payload }, { call, put }) {
       console.log('version start')
       try {
-        const res =  yield call(version)
+        const res = yield call(version)
         console.log('version res is ', res)
-        const { dbCount, onlineCount, name = 'master' } = res.data || {}
-        if(res) {
+        const { dbCount, onlineCount, name = 'master', selfCount } = res.data || {}
+        if (res) {
           yield put({ type: 'profile/_login', username: name })
           toast('お帰りなさい、' + name)
-          yield put({ type: 'updateCount', dbCount, onlineCount })
+          yield put({ type: 'updateCount', dbCount, onlineCount, selfCount })
         }
-      } catch(e) {
+      } catch (e) {
         debug.fail('version fail')
       }
     },
-    addWatcher: [function*({ take, put, call }) {
-      while (true) {
-        const { payload } = yield take('global/dispatch');
-        yield put({ type: 'version'})
-      }
-    }, { type: 'watcher' }],
+    addWatcher: [
+      function*({ take, put, call }) {
+        while (true) {
+          yield take('global/dispatch')
+          yield put({ type: 'version' })
+        }
+      },
+      { type: 'watcher' }
+    ]
   },
   subscriptions: {
-    setup({ history, dispatch }) {
+    setup ({ history, dispatch }) {
       // dispatch({ type: 'version' });
-    },
+    }
   }
 }

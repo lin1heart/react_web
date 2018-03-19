@@ -1,16 +1,16 @@
 // import { dispatch, isClient } from '../utils'
 
 import React from 'react'
-import Chip from 'material-ui/Chip'
 
-const Banner = (props) => {
-  const { dbCount, onlineCount } = props
+const Banner = props => {
+  const { dbCount, onlineCount, selfCount } = props
   return (
     <div style={styles.full}>
       <div style={styles.flexContainer}>
         <h1 style={styles.imageTitle}>welcome to maldives holiday</h1>
-        <h3 style={styles.imameSubTitle}>{'現在の人数:' + dbCount}</h3>
-        <h3 style={styles.imameSubTitle}>{'累計人数:' + onlineCount}</h3>
+        <h3 style={styles.imameSubTitle}>{'現在の人数:' + onlineCount}</h3>
+        <h3 style={styles.imameSubTitle}>{'累計人数:' + dbCount}</h3>
+        <h3 style={styles.imameSubTitle}>{'自分タイムズ:' + selfCount}</h3>
       </div>
       <div style={{ height: '10%', display: 'flex' }}>
         <h3 style={styles.middleText}>拯救世界银河小分队的密码花园</h3>
@@ -42,7 +42,7 @@ const data = [
   'xCode',
   'Android Studio',
   'react',
-  ' material-design',
+  'material-design',
   'SSR',
   'Vue',
   'Angular2.0',

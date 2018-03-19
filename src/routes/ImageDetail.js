@@ -1,13 +1,17 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
+import styled from 'styled-components'
+import Checkbox from 'material-ui/Checkbox'
+import ActionFavorite from 'material-ui/svg-icons/action/favorite'
+import ActionFavoriteBorder from 'material-ui/svg-icons/action/favorite-border'
+
 import { getImageDetail } from '../services/api'
 import { IMAGE_URL, BG_COLOR } from '../utils/config'
 import CopyRight from '../components/CopyRight'
 import TopNavigator from '../components/TopNavigator'
-import styled from 'styled-components'
-
 import stylesHelper from '../utils/stylesHelper.css'
+import { toast } from '../utils'
 
 const Ad = styled.div`
   border: 1px solid #ffa11a;
@@ -16,9 +20,10 @@ const Ad = styled.div`
 `
 export default class ImageDetail extends Component {
   state = {
-    data: []
-  }
-  componentWillMount() {
+    data: [],
+    checked: false
+  };
+  componentWillMount () {
     const { id } = this.props.match.params
     getImageDetail(id).then(res => {
       const { data } = res
@@ -28,8 +33,18 @@ export default class ImageDetail extends Component {
       })
     })
   }
-  render() {
-    const { data } = this.state
+  _onCheck = () => {
+    this.setState(
+      {
+        checked: !this.state.checked
+      },
+      () => {
+        this.state.checked && toast('ありがとうございます')
+      }
+    )
+  };
+  render () {
+    const { data, checked } = this.state
     return (
       <div style={styles.container}>
         {/* <header style={styles.header}>
@@ -45,8 +60,16 @@ export default class ImageDetail extends Component {
           })}
           <br />
         </section>
-        <div>
-          登陆之后可以查看更多哦
+        <div>登陆之后可以查看更多哦</div>
+        <div className={stylesHelper.fc}>
+          <Checkbox
+            checkedIcon={<ActionFavorite />}
+            uncheckedIcon={<ActionFavoriteBorder color={'red'} />}
+            label="Custom icon"
+            style={stylesHelper.fi}
+            checked={checked}
+            onCheck={this._onCheck}
+          />
         </div>
         <CopyRight />
       </div>
