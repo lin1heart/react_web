@@ -66,7 +66,7 @@ export default class ImageDetail extends Component {
             checkedIcon={<ActionFavorite />}
             uncheckedIcon={<ActionFavoriteBorder color={'red'} />}
             label="Custom icon"
-            style={stylesHelper.fi}
+            className={stylesHelper.fi}
             checked={checked}
             onCheck={this._onCheck}
           />

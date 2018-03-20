@@ -6,24 +6,25 @@ const initialState = {
   password: '',
   mail: '',
   isLogin: false,
-  showModal: false,
+  showModal: false
 }
 const reducers = {
-  test(state, { payload }) {
+  test (state, { payload }) {
     return { ...state, payload }
   },
-  _login(state, { username }) {
-    return { ...state, isLogin: true, username }
+  _login (state, { username }) {
+    const isLogin = username !== 'guest' && username !== 'master'
+    return { ...state, isLogin, username }
   },
-  showModal(state) {
+  showModal (state) {
     return { ...state, showModal: true }
   },
-  hideModal(state) {
+  hideModal (state) {
     return { ...state, showModal: false }
   }
 }
 const effects = {
-  *login({ name, pass }, { put, call }) {
+  *login ({ name, pass }, { put, call }) {
     try {
       const res = yield call(login, name, pass)
       console.log('login res is ', res)
@@ -35,7 +36,7 @@ const effects = {
       console.log('login with error: ', e)
     }
   },
-  *signup({ name, pass, mail }, { put, call }) {
+  *signup ({ name, pass, mail }, { put, call }) {
     try {
       const res = yield call(signup, name, pass, mail)
       toast(res.msg)
@@ -44,12 +45,11 @@ const effects = {
       toast(e.msg)
       console.log('signup with error: ', e)
     }
-  },
-  
+  }
 }
 export default {
   namespace: 'profile',
   state: initialState,
   reducers,
-  effects,
+  effects
 }

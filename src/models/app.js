@@ -11,12 +11,12 @@ export default {
     showSnack: false,
     dbCount: 1,
     onlineCount: 1,
-    selfCount: 1,
+    selfCount: 1
   },
 
   reducers: {
     updateChildIndex (state, { childIndex }) {
-      console.log('uasdasd ,updateChildIndex is ', childIndex)
+      console.log('updateChildIndex is ', childIndex)
       return { ...state, childIndex }
     },
     showSnack (state, { message = 'system error' }) {
@@ -34,10 +34,10 @@ export default {
     *version ({ payload }, { call, put }) {
       console.log('version start')
       try {
-        const res = yield call(version)
-        console.log('version res is ', res)
-        const { dbCount, onlineCount, name = 'master', selfCount } = res.data || {}
-        if (res) {
+        const { data } = yield call(version)
+        console.log('version res is ', data)
+        const { dbCount, onlineCount, name = 'master', selfCount } = data || {}
+        if (name) {
           yield put({ type: 'profile/_login', username: name })
           toast('お帰りなさい、' + name)
           yield put({ type: 'updateCount', dbCount, onlineCount, selfCount })
