@@ -10,7 +10,7 @@ import Logo from './Logo'
 import Avatar from './login/Avatar'
 import { CATEGORY  } from '../utils/config'
 
-@connect(({ app }) => app)
+// @connect(({ app }) => app)
 export default class TopNavigator extends Component {
   static contextTypes = {
     router: propTypes.object.isRequired

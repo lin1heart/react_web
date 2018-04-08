@@ -14,7 +14,7 @@ import Login from './Login'
 import Signup from './Signup'
 import { dispatch } from '../../utils/dispatch'
 
-@connect(({ profile }) => profile)
+// @connect(({ profile }) => profile)
 export default class Avatar extends PureComponent {
   state = {
     slideIndex: 0,

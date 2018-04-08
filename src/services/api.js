@@ -2,26 +2,30 @@ import { SERVER_URL, IMAGE_URL, UPLOAD_URL } from '../utils/config'
 import myFetch from '../utils/fetch'
 import { toast } from '../utils'
 
-export const getImageList = (pageIndex: number = 0, pageSize: number = 10, type: string = 0) => {
+export const getImageList = (pageIndex = 0, pageSize = 10, type = 0) => {
   return myFetch.get(SERVER_URL + 'image/getList', {
     pageIndex,
     pageSize,
-    type
+    type,
   })
 }
-export const delImageList = (ids: Array<string> = []) => {
+export const delImageList = (ids = []) => {
   return myFetch.post(SERVER_URL + 'image/deleteList', ids)
 }
 
-export const getImageDetail = (id: string) => {
+export const getImageDetail = id => {
   return myFetch.get(SERVER_URL + 'image/getDetail', { id })
 }
 
-export const login = (username: string, password: string) => {
+export const login = (username, password) => {
   return myFetch.params(SERVER_URL + 'user/login', { username, password })
 }
-export const signup = (username: string, password: string, mail: string) => {
-  return myFetch.params(SERVER_URL + 'user/register', { username, password, mail })
+export const signup = (username, password, mail) => {
+  return myFetch.params(SERVER_URL + 'user/register', {
+    username,
+    password,
+    mail,
+  })
 }
 export const version = () => {
   return myFetch.get(SERVER_URL + 'user/version')
@@ -30,7 +34,7 @@ export const version = () => {
 export const uploadImage = formData => {
   fetch(UPLOAD_URL + 'image/upload', {
     method: 'post',
-    body: formData
+    body: formData,
   })
     .then(res => res.json())
     .then(res => {

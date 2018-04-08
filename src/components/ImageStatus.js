@@ -6,7 +6,7 @@ import FlatButton from 'material-ui/FlatButton';
 import { dispatch } from '../utils/dispatch'
 import { BG_COLOR } from '../utils/config'
 
-@connect(({ imageList: { status } }) => ({ status }))
+// @connect(({ imageList: { status } }) => ({ status }))
 export default class Status extends Component {
     getMore = () => {
         dispatch({ type: 'imageList/getMoreImageList' })

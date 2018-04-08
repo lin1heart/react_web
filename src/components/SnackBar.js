@@ -5,7 +5,7 @@ import Snackbar from 'material-ui/Snackbar';
 import { dispatch, isClient } from '../utils'
 import Banner from '../components/Banner'
 
-@connect(({ app }) => app)
+// @connect(({ app }) => app)
 export default class SnackBar extends Component {
 
   handleRequestClose = () => {
@@ -25,4 +25,3 @@ export default class SnackBar extends Component {
     )
   }
 }
-

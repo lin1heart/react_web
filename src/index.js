@@ -7,9 +7,7 @@ import Router from './Navigator'
 import { printLog } from './utils/config'
 
 // 1. Initialize
-const app = dva({
-  // models: () => models,
-})
+const app = dva()
 
 // 2. Plugins
 // app.use({});

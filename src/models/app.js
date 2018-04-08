@@ -11,27 +11,27 @@ export default {
     showSnack: false,
     dbCount: 1,
     onlineCount: 1,
-    selfCount: 1
+    selfCount: 1,
   },
 
   reducers: {
-    updateChildIndex (state, { childIndex }) {
+    updateChildIndex(state, { childIndex }) {
       console.log('updateChildIndex is ', childIndex)
       return { ...state, childIndex }
     },
-    showSnack (state, { message = 'system error' }) {
+    showSnack(state, { message = 'system error' }) {
       return { ...state, showSnack: true, snackMessage: message }
     },
-    hideSnack (state) {
+    hideSnack(state) {
       return { ...state, showSnack: false, snackMessage: 'init' }
     },
-    updateCount (state, { dbCount, onlineCount, selfCount }) {
+    updateCount(state, { dbCount, onlineCount, selfCount }) {
       return { ...state, dbCount, onlineCount, selfCount }
-    }
+    },
   },
 
   effects: {
-    *version ({ payload }, { call, put }) {
+    * version({ payload }, { call, put }) {
       console.log('version start')
       try {
         const { data } = yield call(version)
@@ -47,18 +47,18 @@ export default {
       }
     },
     addWatcher: [
-      function*({ take, put, call }) {
+      function * ({ take, put, call }) {
         while (true) {
           yield take('global/dispatch')
           yield put({ type: 'version' })
         }
       },
-      { type: 'watcher' }
-    ]
+      { type: 'watcher' },
+    ],
   },
   subscriptions: {
-    setup ({ history, dispatch }) {
+    setup({ history, dispatch }) {
       // dispatch({ type: 'version' });
-    }
-  }
+    },
+  },
 }

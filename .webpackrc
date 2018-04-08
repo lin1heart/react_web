@@ -1,0 +1,12 @@
+{
+  "extraBabelPresets": ["flow"],
+  "extraBabelPlugins": ["transform-flow-strip-types"],
+  "env": {
+    "development": {
+      "extraBabelPlugins": []
+    },
+    "production": {
+      "extraBabelPlugins": []
+    }
+  }
+}

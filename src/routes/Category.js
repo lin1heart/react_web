@@ -22,7 +22,7 @@ export default class Category extends Component {
         <Banner dbCount={dbCount} onlineCount={onlineCount}/>
         <TopNavigator />
         <div style={styles.container}>
-          <ImageList />
+          {/* <ImageList /> */}
           <ImageStatus />
           <DrawMenu />
         </div>

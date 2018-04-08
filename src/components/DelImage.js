@@ -51,7 +51,7 @@ const columns = [
   }
 ]
 
-@connect(({ admin }) => admin)
+// @connect(({ admin }) => admin)
 export default class DelImage extends PureComponent {
   state = { selectImages: [] }
   queryData = () => {
