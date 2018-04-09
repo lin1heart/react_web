@@ -2,19 +2,17 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Affix } from 'antd'
 import propTypes from 'prop-types'
-import FlatButton from 'material-ui/FlatButton';
+import FlatButton from 'material-ui/FlatButton'
 
 import { dispatch } from '../utils/dispatch'
 import { isClient } from '../utils'
 import Logo from './Logo'
 import Avatar from './login/Avatar'
-import { CATEGORY  } from '../utils/config'
+import { CATEGORY } from '../utils/config'
 
-// @connect(({ app }) => app)
+@connect(({ app }) => app)
 export default class TopNavigator extends Component {
-  static contextTypes = {
-    router: propTypes.object.isRequired
-  }
+  static contextTypes = {router: propTypes.object.isRequired}
   _handleClick = (childIndex, typeIndex, code) => {
     console.log('childIndex, typeIndex, code is ', childIndex, typeIndex, code)
     dispatch({ type: 'imageList/getImageList', payload: code })
@@ -37,14 +35,12 @@ export default class TopNavigator extends Component {
     )
   }
 }
-TopNavigator.defaultProps = {
-  showCategory: true,
-}
+TopNavigator.defaultProps = {showCategory: true}
 const styles = {
   topContainer: {
     background: 'rgb(190, 200, 200)',
     padding: '16px',
     display: 'flex',
-    alignItems: 'center'
-  }
+    alignItems: 'center',
+  },
 }

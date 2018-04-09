@@ -2,25 +2,23 @@ import debug from './debug'
 
 const httpLogSwitch = true
 
-const get = (url: string, params: Object = {}): Promise => {
+const get = (url, params) => {
   debug.custom(
     {
       color: 'green',
       prefix: '__fetch__ get start ' + url,
-      show: httpLogSwitch
+      show: httpLogSwitch,
     },
     params
   )
-  return fetch(url + obj2urlParams(params), {
-    credentials: 'include'
-  })
+  return fetch(url + obj2urlParams(params), {credentials: 'include'})
     .then(res => res.json())
     .then(res => {
       debug.custom(
         {
           color: 'green',
           prefix: '__fetch__ get receive ' + url,
-          show: httpLogSwitch
+          show: httpLogSwitch,
         },
         params
       )
@@ -35,7 +33,7 @@ const get = (url: string, params: Object = {}): Promise => {
         {
           color: 'red',
           prefix: '__fetch__ get receive reveive ERROR ' + url,
-          show: httpLogSwitch
+          show: httpLogSwitch,
         },
         params
       )
@@ -44,12 +42,12 @@ const get = (url: string, params: Object = {}): Promise => {
 }
 
 // post row data
-const post = (url: string, params: Object = {}): Promise => {
+const post = (url, params) => {
   debug.custom(
     {
       color: 'green',
       prefix: '__fetch__ post start ' + url,
-      show: httpLogSwitch
+      show: httpLogSwitch,
     },
     params
   )
@@ -57,10 +55,10 @@ const post = (url: string, params: Object = {}): Promise => {
     method: 'POST',
     headers: {
       // Accept: 'application/json',
-      'Content-Type': 'application/json;charset=UTF-8'
+      'Content-Type': 'application/json;charset=UTF-8',
     },
     credentials: 'include',
-    body: JSON.stringify(params)
+    body: JSON.stringify(params),
   })
     .then(res => res.json())
     .then(res => {
@@ -68,7 +66,7 @@ const post = (url: string, params: Object = {}): Promise => {
         {
           color: 'green',
           prefix: '__fetch__ POST receive ' + url,
-          show: httpLogSwitch
+          show: httpLogSwitch,
         },
         params
       )
@@ -83,7 +81,7 @@ const post = (url: string, params: Object = {}): Promise => {
         {
           color: 'red',
           prefix: '__fetch__ post reveive ERROR ' + url,
-          show: httpLogSwitch
+          show: httpLogSwitch,
         },
         params
       )
@@ -91,12 +89,12 @@ const post = (url: string, params: Object = {}): Promise => {
     })
 }
 // post row data
-const params = (url: string, params: Object = {}): Promise => {
+const params = (url, params) => {
   debug.custom(
     {
       color: 'green',
       prefix: '__fetch__ params start ' + url,
-      show: httpLogSwitch
+      show: httpLogSwitch,
     },
     params
   )
@@ -105,10 +103,10 @@ const params = (url: string, params: Object = {}): Promise => {
     method: 'POST',
     headers: {
       // Accept: 'application/json',
-      'Content-Type': 'application/x-www-form-urlencoded'
+      'Content-Type': 'application/x-www-form-urlencoded',
     },
     credentials: 'include',
-    body: prarmsStr.substr(1, prarmsStr.length)
+    body: prarmsStr.substr(1, prarmsStr.length),
   })
     .then(res => res.json())
     .then(res => {
@@ -116,7 +114,7 @@ const params = (url: string, params: Object = {}): Promise => {
         {
           color: 'green',
           prefix: '__fetch__ params receive ' + url,
-          show: httpLogSwitch
+          show: httpLogSwitch,
         },
         params
       )
@@ -131,7 +129,7 @@ const params = (url: string, params: Object = {}): Promise => {
         {
           color: 'red',
           prefix: '__fetch__ params reveive ERROR ' + url,
-          show: httpLogSwitch
+          show: httpLogSwitch,
         },
         params
       )
@@ -142,10 +140,10 @@ const params = (url: string, params: Object = {}): Promise => {
 export default {
   get,
   post,
-  params
+  params,
 }
 
-const obj2urlParams = (obj: Object): string => {
+const obj2urlParams = obj => {
   return Object.keys(obj).length === 0
     ? ''
     : Object.keys(obj)
