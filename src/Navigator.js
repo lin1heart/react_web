@@ -1,6 +1,5 @@
-import React, { Component } from 'react'
-import { Router, Route, Link, Switch, HashRouter } from 'react-router-dom'
-// import { connect } from 'react-redux'
+import React from 'react'
+import { Route, Switch, HashRouter } from 'react-router-dom'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 
 import Entry from './routes/Entry'
@@ -9,7 +8,6 @@ import UploadImage from './routes/UploadImage'
 import Category from './routes/Category'
 import SnackBar from './components/SnackBar'
 
-// @connect(({ navigator}) => navigator)
 function Navigator({ history }) {
   return (
     <MuiThemeProvider>

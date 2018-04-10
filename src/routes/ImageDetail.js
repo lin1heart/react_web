@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import { connect } from 'react-redux'
 
 import styled from 'styled-components'
 import Checkbox from 'material-ui/Checkbox'
@@ -21,29 +20,25 @@ const Ad = styled.div`
 export default class ImageDetail extends Component {
   state = {
     data: [],
-    checked: false
-  };
-  componentWillMount () {
+    checked: false,
+  }
+  componentWillMount() {
     const { id } = this.props.match.params
     getImageDetail(id).then(res => {
       const { data } = res
       console.log('getImageDetail data is ', data)
-      this.setState({
-        data
-      })
+      this.setState({data})
     })
   }
   _onCheck = () => {
     this.setState(
-      {
-        checked: !this.state.checked
-      },
+      {checked: !this.state.checked},
       () => {
         this.state.checked && toast('ありがとうございます')
       }
     )
-  };
-  render () {
+  }
+  render() {
     const { data, checked } = this.state
     return (
       <div style={styles.container}>
@@ -56,7 +51,9 @@ export default class ImageDetail extends Component {
         <section style={styles.section}>
           {data.map((item, index) => {
             const { url, id, height, width } = item
-            return <img key={id} src={IMAGE_URL + url} style={styles.imageItem} />
+            return (
+              <img key={id} src={IMAGE_URL + url} style={styles.imageItem} />
+            )
           })}
           <br />
         </section>
@@ -80,26 +77,24 @@ const styles = {
   container: {
     backgroundColor: BG_COLOR,
     width: '100%',
-    height: '100%'
+    height: '100%',
   },
   ad: {
     border: '1px solid #ffa11a',
     height: 40,
-    width: '100%'
+    width: '100%',
   },
-  header: {
-    width: '100%'
-  },
+  header: {width: '100%'},
   section: {
     flexDirection: 'column',
     padding: '0 10%',
     display: 'inline-flex',
-    flex: 1
+    flex: 1,
   },
   imageItem: {
     width: '100%',
     marginTop: 16,
     border: '1px #ffa11a solid',
-    borderRadius: 8
-  }
+    borderRadius: 8,
+  },
 }

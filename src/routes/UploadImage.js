@@ -1,12 +1,10 @@
 import React, { Component } from 'react'
-import { connect } from 'react-redux'
 import styled from 'styled-components'
 
 import DelImage from '../components/DelImage'
 import TopNavigator from '../components/TopNavigator'
 import { toast } from '../utils'
 import { uploadImage } from '../services/api'
-import { IMAGE_URL, SERVER_URL, UPLOAD_URL } from '../utils/config.js'
 
 const PreViewContaienr = styled.div`
   display: flex;

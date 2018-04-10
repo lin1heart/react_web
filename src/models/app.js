@@ -43,13 +43,13 @@ export default {
           yield put({ type: 'updateCount', dbCount, onlineCount, selfCount })
         }
       } catch (e) {
-        debug.fail('version fail')
+        debug.fail('version fail', e)
       }
     },
     addWatcher: [
       function * ({ take, put, call }) {
         while (true) {
-          yield take('global/dispatch')
+          yield take('event/dispatch')
           yield put({ type: 'version' })
         }
       },

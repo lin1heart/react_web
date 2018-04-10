@@ -5,10 +5,8 @@ import propTypes from 'prop-types'
 import FlatButton from 'material-ui/FlatButton'
 
 import { dispatch } from '../utils/dispatch'
-import { isClient } from '../utils'
 import Logo from './Logo'
 import Avatar from './login/Avatar'
-import { CATEGORY } from '../utils/config'
 
 @connect(({ app }) => app)
 export default class TopNavigator extends Component {
@@ -23,7 +21,6 @@ export default class TopNavigator extends Component {
     history.goBack()
   }
   render() {
-    const { handleClick, typeIndex, childIndex, showCategory } = this.props
     return (
       <Affix>
         <header style={styles.topContainer}>

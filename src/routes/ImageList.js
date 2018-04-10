@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { PropTypes } from 'prop-types'
-import CircularProgress from 'material-ui/CircularProgress'
 
 import styles from './ImageList.css'
 import { IMAGE_URL } from '../utils/config'

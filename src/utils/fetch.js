@@ -1,28 +1,29 @@
 import debug from './debug'
 
-const httpLogSwitch = true
+import { printHttp } from './config'
 
 const get = (url, params) => {
   debug.custom(
     {
       color: 'green',
       prefix: '__fetch__ get start ' + url,
-      show: httpLogSwitch,
+      show: printHttp,
     },
     params
   )
-  return fetch(url + obj2urlParams(params), {credentials: 'include'})
+  return fetch(url + obj2urlParams(params))
     .then(res => res.json())
     .then(res => {
+      console.log('res is ');
       debug.custom(
         {
           color: 'green',
           prefix: '__fetch__ get receive ' + url,
-          show: httpLogSwitch,
+          show: printHttp,
         },
-        params
+        res
       )
-      const { code, msg } = res
+      const { code } = res
       if (code !== 200) {
         return Promise.reject(res)
       }
@@ -33,9 +34,9 @@ const get = (url, params) => {
         {
           color: 'red',
           prefix: '__fetch__ get receive reveive ERROR ' + url,
-          show: httpLogSwitch,
+          show: printHttp,
         },
-        params
+        e
       )
       throw e
     })
@@ -47,7 +48,7 @@ const post = (url, params) => {
     {
       color: 'green',
       prefix: '__fetch__ post start ' + url,
-      show: httpLogSwitch,
+      show: printHttp,
     },
     params
   )
@@ -66,9 +67,9 @@ const post = (url, params) => {
         {
           color: 'green',
           prefix: '__fetch__ POST receive ' + url,
-          show: httpLogSwitch,
+          show: printHttp,
         },
-        params
+        res
       )
       const { code, msg } = res
       if (code !== 200) {
@@ -81,9 +82,9 @@ const post = (url, params) => {
         {
           color: 'red',
           prefix: '__fetch__ post reveive ERROR ' + url,
-          show: httpLogSwitch,
+          show: printHttp,
         },
-        params
+        e
       )
       throw e
     })
@@ -94,7 +95,7 @@ const params = (url, params) => {
     {
       color: 'green',
       prefix: '__fetch__ params start ' + url,
-      show: httpLogSwitch,
+      show: printHttp,
     },
     params
   )
@@ -114,9 +115,9 @@ const params = (url, params) => {
         {
           color: 'green',
           prefix: '__fetch__ params receive ' + url,
-          show: httpLogSwitch,
+          show: printHttp,
         },
-        params
+        res
       )
       const { code, msg } = res
       if (code !== 200) {
@@ -129,9 +130,9 @@ const params = (url, params) => {
         {
           color: 'red',
           prefix: '__fetch__ params reveive ERROR ' + url,
-          show: httpLogSwitch,
+          show: printHttp,
         },
-        params
+        e
       )
       throw e
     })

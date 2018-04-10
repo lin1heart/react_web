@@ -28,7 +28,7 @@ export const signup = (username, password, mail) => {
   })
 }
 export const version = () => {
-  return myFetch.get(SERVER_URL + 'user/version')
+  return myFetch.get(SERVER_URL + 'user/version', {})
 }
 
 export const uploadImage = formData => {
