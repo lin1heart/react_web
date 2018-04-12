@@ -2,7 +2,7 @@ import debug from './debug'
 
 import { printHttp } from './config'
 
-const get = (url, params) => {
+const get = (url, params = {}) => {
   debug.custom(
     {
       color: 'green',
@@ -11,10 +11,10 @@ const get = (url, params) => {
     },
     params
   )
-  return fetch(url + obj2urlParams(params))
+  return fetch(url + obj2urlParams(params), { credentials: 'include' })
     .then(res => res.json())
     .then(res => {
-      console.log('res is ');
+      console.log('res is ')
       debug.custom(
         {
           color: 'green',
@@ -43,7 +43,7 @@ const get = (url, params) => {
 }
 
 // post row data
-const post = (url, params) => {
+const post = (url, params = {}) => {
   debug.custom(
     {
       color: 'green',
@@ -90,7 +90,7 @@ const post = (url, params) => {
     })
 }
 // post row data
-const params = (url, params) => {
+const params = (url, params = {}) => {
   debug.custom(
     {
       color: 'green',

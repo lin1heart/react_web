@@ -2,10 +2,10 @@ import React from 'react'
 import { Route, Switch, HashRouter } from 'react-router-dom'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 
-import Entry from './routes/Entry'
-import ImageDetail from './routes/ImageDetail'
-import UploadImage from './routes/UploadImage'
-import Category from './routes/Category'
+import Entry from './containers/Entry'
+import ImageDetail from './containers/ImageDetail'
+import UploadImage from './containers/UploadImage'
+import Category from './containers/Category'
 import SnackBar from './components/SnackBar'
 
 function Navigator({ history }) {
