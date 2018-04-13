@@ -7,6 +7,7 @@ import ImageDetail from './containers/ImageDetail'
 import UploadImage from './containers/UploadImage'
 import Category from './containers/Category'
 import SnackBar from './components/SnackBar'
+import ChatRoom from './components/ChatRoom'
 
 function Navigator({ history }) {
   return (
@@ -21,6 +22,7 @@ function Navigator({ history }) {
           </Switch>
         </HashRouter>
         <SnackBar />
+        <ChatRoom />
       </div>
     </MuiThemeProvider>
   )
