@@ -4,7 +4,7 @@ import CircularProgress from 'material-ui/CircularProgress'
 import FlatButton from 'material-ui/FlatButton'
 
 import { dispatch } from '../utils/dispatch'
-import { BG_COLOR } from '../utils/config'
+import { BG_COLOR } from '../utils/const'
 
 @connect(({ imageList: { status } }) => ({ status }))
 export default class Status extends Component {

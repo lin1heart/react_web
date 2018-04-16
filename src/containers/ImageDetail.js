@@ -7,7 +7,7 @@ import ActionFavoriteBorder from 'material-ui/svg-icons/action/favorite-border'
 import { connect } from 'react-redux'
 
 import { getImageDetail } from '../services/api'
-import { IMAGE_URL, BG_COLOR } from '../utils/config'
+import { IMAGE_URL, BG_COLOR } from '../utils/const'
 import CopyRight from '../components/CopyRight'
 import TopNavigator from '../components/TopNavigator'
 import stylesHelper from '../utils/stylesHelper.css'

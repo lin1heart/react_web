@@ -7,7 +7,7 @@ import FloatingActionButton from 'material-ui/FloatingActionButton'
 import ContentAdd from 'material-ui/svg-icons/content/sort'
 
 import { dispatch } from '../utils/dispatch'
-import { BG_COLOR, CATEGORY } from '../utils/config'
+import { BG_COLOR, CATEGORY } from '../utils/const'
 
 @connect(({ imageList: { status } }) => ({ status }))
 export default class DrawMenu extends Component {
