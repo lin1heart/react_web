@@ -8,18 +8,21 @@ import ImageStatus from '../components/ImageStatus'
 import DrawMenu from '../components/DrawMenu'
 import Banner from '../components/Banner'
 
-@connect(({ app }) => app)
+@connect(({ app, profile: { isLogin } }) => ({ ...app, isLogin }))
 export default class Category extends Component {
-
   handleRequestClose = () => {
     dispatch({ type: 'app/showSnack' })
-  };
+  }
   render() {
-    console.log('category prosp is ', this.props)
-    const { dbCount, onlineCount } = this.props
+    const { dbCount, onlineCount, selfCount, isLogin } = this.props
     return (
       <section style={styles.full}>
-        <Banner dbCount={dbCount} onlineCount={onlineCount}/>
+        <Banner
+          dbCount={dbCount}
+          onlineCount={onlineCount}
+          selfCount={selfCount}
+          isLogin={isLogin}
+        />
         <TopNavigator />
         <div style={styles.container}>
           <ImageList />
@@ -30,7 +33,6 @@ export default class Category extends Component {
     )
   }
 }
-
 
 const styles = {
   full: {
@@ -54,7 +56,6 @@ const styles = {
     height: '90%',
     justifyContent: 'center',
     alignItems: 'center',
-    flexDirection: 'column'
+    flexDirection: 'column',
   },
-
 }

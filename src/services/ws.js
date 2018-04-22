@@ -1,7 +1,7 @@
 import Stomp from '@stomp/stompjs'
 
-
 import { WS_URL } from '../utils/config'
+import { dispatch } from '../utils'
 
 class WebSocket {
   connect = () => {
@@ -26,8 +26,15 @@ class WebSocket {
     console.log('closeEventCallback', arguments)
   }
   subscribe = () => {
-    this.client.subscribe('/topic/chatRoom', () => {
-      console.log('subscribe', arguments)
+    this.client.subscribe('/topic/chatRoom', res => {
+      const { body } = res
+      const newRes = JSON.parse(body)
+      dispatch({ type: 'wsHandler/onResponse', body: newRes })
+    })
+    this.client.subscribe('/topic/version', res => {
+      const { body } = res
+      const newRes = JSON.parse(body)
+      dispatch({ type: 'wsHandler/onResponse', body: newRes })
     })
   }
   sendSingle = (msg, name) => {

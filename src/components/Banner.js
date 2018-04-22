@@ -3,14 +3,16 @@
 import React from 'react'
 
 const Banner = props => {
-  const { dbCount, onlineCount, selfCount } = props
+  const { dbCount, onlineCount, selfCount, isLogin } = props
   return (
     <div style={styles.full}>
       <div style={styles.flexContainer}>
         <h1 style={styles.imageTitle}>welcome to maldives holiday</h1>
         <h3 style={styles.imameSubTitle}>{'現在の人数:' + onlineCount}</h3>
         <h3 style={styles.imameSubTitle}>{'累計人数:' + dbCount}</h3>
-        <h3 style={styles.imameSubTitle}>{'自分タイムズ:' + selfCount}</h3>
+        {isLogin && (
+          <h3 style={styles.imameSubTitle}>{'自分タイムズ:' + selfCount}</h3>
+        )}
       </div>
       <div style={{ height: '10%', display: 'flex' }}>
         <h3 style={styles.middleText}>拯救世界银河小分队的密码花园</h3>
@@ -18,10 +20,10 @@ const Banner = props => {
     </div>
   )
 }
-function handleRequestDelete () {
+function handleRequestDelete() {
   alert('You clicked the delete button.')
 }
-function handleClick () {
+function handleClick() {
   alert('You clicked the Chip.')
 }
 const data = [
@@ -97,7 +99,7 @@ const data = [
   'BAT',
   'Ec2',
   'CGI',
-  'Safari'
+  'Safari',
 ]
 // class Banner extends React.Component {
 //   render () {
@@ -119,11 +121,9 @@ const styles = {
     width: '100%',
     height: '100%',
     display: 'flex',
-    flexWrap: 'wrap'
+    flexWrap: 'wrap',
   },
-  chip: {
-    margin: 4
-  },
+  chip: {margin: 4},
   flexContainer: {
     display: 'flex',
     background: 'url("./maldives.jpg") no-repeat center ',
@@ -131,23 +131,23 @@ const styles = {
     height: '90%',
     justifyContent: 'center',
     alignItems: 'center',
-    flexDirection: 'column'
+    flexDirection: 'column',
   },
   imageTitle: {
     display: 'inline-flex',
     color: '#fff',
     fontSize: '2.5rem',
-    textAlign: 'center'
+    textAlign: 'center',
   },
   imameSubTitle: {
     display: 'inline-flex',
     color: '#fff',
-    fontSize: '1rem'
+    fontSize: '1rem',
   },
   middleText: {
     fontSize: '1rem',
     display: 'inline-flex',
     alignSelf: 'center',
-    marginLeft: '1.5rem'
-  }
+    marginLeft: '1.5rem',
+  },
 }

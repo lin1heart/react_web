@@ -25,8 +25,8 @@ export default {
     hideSnack(state) {
       return { ...state, showSnack: false, snackMessage: 'init' }
     },
-    updateCount(state, { dbCount, onlineCount, selfCount }) {
-      return { ...state, dbCount, onlineCount, selfCount }
+    updateCount(state, data) {
+      return { ...state, ...data }
     },
   },
 
