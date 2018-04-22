@@ -31,6 +31,7 @@ const effects = {
       yield put({ type: '_login', username: name, password: pass })
       toast('login success')
       yield put({ type: 'hideModal' })
+      yield put({ type: 'app/version' })
     } catch (e) {
       toast(e.msg)
       console.log('login with error: ', e)
