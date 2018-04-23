@@ -8,7 +8,7 @@ import { connect } from 'react-redux'
 import { Input } from 'antd'
 
 import { H, V } from './Useless'
-import { YMDFormat } from '../utils/number'
+import { YMDFormat } from '../utils/time'
 
 import { ws } from '../services/ws'
 
@@ -44,19 +44,7 @@ export default class ChatRoom extends Component {
     const { username, history } = this.props
     console.log(' chatRoom render ', this.props)
     return (
-      <Draggable
-        // handle=".handle"
-        // defaultPosition={{
-        //   x: 0,
-        //   y: 0,
-        // }}
-        // position={null}
-        // grid={[25, 25]}
-        // onStart={this.handleStart}
-        // onDrag={this.handleDrag}
-        // onStop={this.handleStop}
-        enableUserSelectHack={false}
-      >
+      <Draggable enableUserSelectHack={false}>
         <div
           style={{
             position: 'absolute',
@@ -100,7 +88,10 @@ const LeftItem = props => {
   const { name, content, timestamp } = props
   return (
     <V style={styles.leftContainer}>
-      <div>{name + YMDFormat(timestamp) + ':'}</div>
+      <div>
+        <span style={styles.name}>{name}</span>
+        {' ' + YMDFormat(timestamp) + ':'}
+      </div>
       <div>{content}</div>
     </V>
   )
@@ -109,7 +100,10 @@ const RightItem = props => {
   const { name, content, timestamp } = props
   return (
     <V style={styles.rightrContainer}>
-      <div>{name + YMDFormat(timestamp) + ':'}</div>
+      <div>
+        <span style={styles.name}>{name}</span>
+        {' ' + YMDFormat(timestamp) + ':'}
+      </div>
       <div>{content}</div>
     </V>
   )
@@ -122,5 +116,5 @@ const styles = {
     alignItems: 'flex-end',
     backgroundColor: 'red',
   },
-  name: { color: '' },
+  name: { fontWeight: 'bold' },
 }
